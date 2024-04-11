@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <?php include_once (".././includes/header.php"); ?>
+    <?php include_once ("./includes/header.php"); ?>
     <title>Privacy Policy - DoubtHunt</title>
 </head>
 
@@ -59,7 +59,7 @@ By using DoubtHunt, you agree to the terms of this Refund Policy.
             </p>
         </div>
     </div>
-    <?php include_once (".././includes/footer.php"); ?>
+    <?php include_once ("./includes/footer.php"); ?>
 </body>
 
 </html>

@@ -7,7 +7,7 @@
                 <a href='index.php'><img src='http://localhost/doubthunt/core/img/logoMain.png'></a>
             </div>
             <div class="flex-[1]">
-                <nav class="flex justify-center gap-10">
+                <nav class="justify-center gap-10 hidden lg:flex">
                     <a href="" class="font-semibold text-slate-950">Solve</a>
                     <a href="" class="font-semibold text-slate-950">Guides</a>
                     <a href="" class="font-semibold text-slate-950">About</a>
@@ -15,7 +15,8 @@
                 </nav>
             </div>
             <div class="flex-[1] justify-end flex">
-                <button class="text-white py-2 px-4 rounded-lg bg-orange-500 font-semibold">Get Started <i class="bi bi-arrow-right"></i></button>
+                <button class="text-white py-2 px-4 rounded-lg bg-orange-500 font-semibold hidden lg:block">Get Started <i class="bi bi-arrow-right"></i></button>
+                <button class="block lg:hidden"><i class="bi bi-list"></i></button>
             </div>
         </div>
 </div>
