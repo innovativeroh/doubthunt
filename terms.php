@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <?php include_once (".././includes/header.php"); ?>
+    <?php include_once ("./includes/header.php"); ?>
     <title>Terms & Conditions - DoubtHunt</title>
 </head>
 
@@ -154,7 +154,7 @@
 
         </div>
     </div>
-    <?php include_once (".././includes/footer.php"); ?>
+    <?php include_once ("./includes/footer.php"); ?>
 </body>
 
 </html>

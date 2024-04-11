@@ -11,9 +11,9 @@
         <a href='#' class="text-sm text-zinc-500">Register</a><span class="pl-3 pr-3 text-lg text-zinc-500">&bull;</span>
         <a href='#' class="text-sm text-zinc-500">Administrator</a>
         <br>
-        <a href='#' class="text-md text-zinc-400">Terms & Conditions</a><span class="pl-4 pr-4 text-lg text-zinc-500">&bull;</span>
-        <a href='#' class="text-md text-zinc-400">Privacy Policy</a><span class="pl-4 pr-4 text-lg text-zinc-500">&bull;</span>
-        <a href='#' class="text-md text-zinc-400">Refund Policy</a><span class="pl-4 pr-4 text-lg text-zinc-500">&bull;</span>
+        <a href='terms.php' class="text-md text-zinc-400">Terms & Conditions</a><span class="pl-4 pr-4 text-lg text-zinc-500">&bull;</span>
+        <a href='privacy.php' class="text-md text-zinc-400">Privacy Policy</a><span class="pl-4 pr-4 text-lg text-zinc-500">&bull;</span>
+        <a href='refund.php' class="text-md text-zinc-400">Refund Policy</a><span class="pl-4 pr-4 text-lg text-zinc-500">&bull;</span>
         <a href='#' class="text-md text-zinc-400">FAQs</a>
         <br>
         <br>
