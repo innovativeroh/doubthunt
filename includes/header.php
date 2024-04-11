@@ -4,7 +4,7 @@
     <div class="max-w-[1280px] m-auto">
         <div class="flex flex-wrap justify-center items-center">
             <div class="flex-[1]">
-                <img src='./core/img/logoMain.png'>
+                <a href='.././index.php'><img src='http://localhost/doubthunt/core/img/logoMain.png'></a>
             </div>
             <div class="flex-[1]">
                 <nav class="flex justify-center gap-10">
