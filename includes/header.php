@@ -1,10 +1,10 @@
 <link rel="icon" type="image/png" href="./core/img/favicon.png">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
-<div class="w-full p-4 bg-white shadow-lg fixed">
+<div class="w-full p-4 bg-white shadow-lg fixed z-[10]">
     <div class="max-w-[1280px] m-auto">
         <div class="flex flex-wrap justify-center items-center">
             <div class="flex-[1]">
-                <a href='index.php'><img src='http://localhost/doubthunt/core/img/logoMain.png'></a>
+                <a href='index.php'><img src='./core/img/logoMain.png'></a>
             </div>
             <div class="flex-[1]">
                 <nav class="justify-center gap-10 hidden lg:flex">
