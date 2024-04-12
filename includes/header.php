@@ -15,9 +15,34 @@
                 </nav>
             </div>
             <div class="flex-[1] justify-end flex">
-                <button class="text-white py-2 px-4 rounded-lg bg-orange-500 font-semibold hidden lg:block">Get Started <i class="bi bi-arrow-right"></i></button>
+                <button id="loginOTP"
+                    class="text-white py-2 px-4 rounded-lg bg-orange-500 font-semibold hidden lg:block">Get Started <i
+                        class="bi bi-arrow-right"></i></button>
                 <button class="block lg:hidden"><i class="bi bi-list"></i></button>
             </div>
         </div>
+    </div>
 </div>
+<div class="w-full h-screen z-[11] fixed" id="overlay" style="display: none;">
+    <div
+        class="w-[400px] bg-white h-[400px] shadow-lg rounded-lg top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 absolute">
+        <div class="">
+            <button onclick="hideOverlay()">Close</button>
+        </div>
+    </div>
 </div>
+<script>
+// Get references to the button and overlay elements
+const loginOTPButton = document.getElementById('loginOTP');
+const overlay = document.getElementById('overlay');
+// Add click event listener to the loginOTP button
+loginOTPButton.addEventListener('click', function() {
+  // Toggle the display of the overlay
+  overlay.style.display = (overlay.style.display === 'block') ? 'none' : 'block';
+});
+
+function hideOverlay() {
+  overlay.style.display = 'none';
+}
+
+</script>
