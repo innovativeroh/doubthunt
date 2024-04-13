@@ -1,6 +1,6 @@
 //Allowing Number Into Inputs
 document.addEventListener("DOMContentLoaded", function () {
-  var numberInput = document.getElementById("onlyNum");
+  var numberInput = document.getElementById("onlyNum") && document.getElementById("onlyOTP");
 
   numberInput.addEventListener("input", function (event) {
     var currentValue = event.target.value;
