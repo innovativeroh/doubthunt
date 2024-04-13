@@ -21,3 +21,4 @@
     </div>
 </div>
 <script src="https://cdn.tailwindcss.com"></script>
+<script src="./core/js/functions.js"></script>

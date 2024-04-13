@@ -27,7 +27,7 @@
                                     style="font-size: 26px;"></i>
                                 <input type="text"
                                     class="w-full pl-12 py-2 outline-none border-[1px] border-gray-200 rounded-l-lg"
-                                    name="query" placeholder="Search..." />
+                                    name="query" id="onlyNum" placeholder="Search..." />
                             </div>
                             <div class="flex-1">
                                 <button type="button"
