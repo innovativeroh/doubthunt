@@ -8,3 +8,10 @@ date_default_timezone_set("Asia/Calcutta");
 if (!$conn == true) {
     echo "Database Error!";
 }
+session_start();
+if (isset($_SESSION['username'])) {
+    $user = $_SESSION["username"];
+}
+else {
+    $user = "No User!";
+}

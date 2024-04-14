@@ -14,4 +14,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $query2 = mysqli_query($conn, $sql2);
     $count = mysqli_num_rows($query2);
 
+    if($count == 0) {
+        echo "Invalid OTP";
+    } else {
+        $_SESSION['username'] = $mobile;
+        echo "success";
+    }
 }

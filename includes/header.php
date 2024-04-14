@@ -19,7 +19,7 @@
             </div>
             <div class="flex-[1] justify-end flex">
                 <button id="loginOTP"
-                    class="text-white py-2 px-4 rounded-lg bg-orange-500 font-semibold hidden lg:block">Get Started <i
+                    class="text-white py-2 px-4 rounded-lg bg-orange-500 font-semibold hidden lg:block"><?=$user?>Get Started <i
                         class="bi bi-arrow-right"></i></button>
                 <button class="block lg:hidden"><i class="bi bi-list"></i></button>
             </div>
@@ -66,7 +66,11 @@
                     url: 'routes/otpAuth.php',
                     data: formData2,
                     success: function (response) {
-                        alert(response);
+                        if(response == "success") {
+                            location.reload();
+                        } else {
+                            $('#otpResp').html(response);
+                        }
                     },
                     error: function () {
                         alert("Server Error!");
@@ -116,7 +120,8 @@
                         <button type="submit"
                             class="w-full bg-orange-500 p-2 rounded-lg font-semibold mt-4 text-white">Verify <i
                                 class="bi bi-arrow-right"></i></button>
-                    </form>
+                            </form>
+                            <span id="otpResp" class="text-center text-red-400 text-sm font-semibold"></span>
                 </div>
 
                 <!-- OTP AREA ENDS HERE -->
