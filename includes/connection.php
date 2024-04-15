@@ -11,6 +11,19 @@ if (!$conn == true) {
 session_start();
 if (isset($_SESSION['username'])) {
     $user = $_SESSION["username"];
+    $sql = "SELECT * FROM `users` WHERE `mobile`='$user'";
+    $query = mysqli_query($conn, $sql);
+    while ($row = mysqli_fetch_assoc($query)) {
+        $global_id = $row["id"];
+        $global_full_name = $row["full_name"];
+        if($global_full_name == "") {
+            $global_full_name = "Student";
+        } else {
+            $global_full_name;
+        }
+        $global_mobile = $row["mobile"];
+        $global_email = $row["email"];
+    }
 }
 else {
     $user = "No User!";

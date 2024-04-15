@@ -3,7 +3,6 @@
 
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="./core/css/main.css" type="text/css">
     <?php include_once ("./includes/header.php"); ?>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>DoubtHunt - Answer For Every Doubt</title>
@@ -16,10 +15,9 @@
             <div
                 class="flex-wrap p-[40px] flex-col flex items-center h-auto lg:h-screen lg:flex-row gap-20 mt-20 lg:mt-0">
                 <div class="flex-[1.5]">
-                    <h1 class="text-5xl font-bold leading-[60px] text-gray-800"><span
-                            class="text-orange-500">DoubtHunt</span>
-                        helps with homework, doubts and <span class="text-orange-400">solutions</span> to all the <span
-                            class="text-orange-600">questions.</span></h1>
+                    <h1 class="text-5xl font-bold leading-[60px] text-gray-800">Get
+                        <span class="text-orange-400">Best Solutions</span> For Doubts & <span
+                            class="text-orange-600">Questions.</span></h1>
                     <div class="rounded-sm shadow-lg w-full p-4 bg-white rounded-sm border-gray-200 rounded-xl mt-8">
                         <div class="flex flex-row justify-between items-center">
                             <div class="flex-[10] bg-white relative">
