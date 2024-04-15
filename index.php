@@ -15,7 +15,7 @@
             <div
                 class="flex-wrap p-[40px] flex-col flex items-center h-auto lg:h-screen lg:flex-row gap-20 mt-20 lg:mt-0">
                 <div class="flex-[1.5]">
-                    <h1 class="text-5xl font-bold leading-[60px] text-gray-800">Get
+                    <h1 class="text-4xl leading-[40px] lg:text-5xl lg:leading-[60px] font-bold text-gray-800">Get
                         <span class="text-orange-400">Best Solutions</span> For Doubts & <span
                             class="text-orange-600">Questions.</span></h1>
                     <div class="rounded-sm shadow-lg w-full p-4 bg-white rounded-sm border-gray-200 rounded-xl mt-8">
