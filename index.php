@@ -17,7 +17,8 @@
                 <div class="flex-[1.5]">
                     <h1 class="text-4xl leading-[40px] lg:text-5xl lg:leading-[60px] font-bold text-gray-800">Get
                         <span class="text-orange-400">Best Solutions</span> For Doubts & <span
-                            class="text-orange-600">Questions.</span></h1>
+                            class="text-orange-600">Questions.</span>
+                    </h1>
                     <div class="rounded-sm shadow-lg w-full p-4 bg-white rounded-sm border-gray-200 rounded-xl mt-8">
                         <div class="flex flex-row justify-between items-center">
                             <div class="flex-[10] bg-white relative">
@@ -25,7 +26,10 @@
                                     style="font-size: 26px;"></i>
                                 <input type="text"
                                     class="w-full pl-12 py-2 outline-none border-[1px] border-gray-200 rounded-l-lg"
-                                    name="query" id="onlyNum" placeholder="Search..." />
+                                    name="query" id="searchInput" placeholder="Search..." />
+                                <div id="searchResults"
+                                    class="absolute w-full bg-white rounded-b-xl shadow-xl hidden">
+                                </div>
                             </div>
                             <div class="flex-1">
                                 <button type="button"
@@ -51,6 +55,38 @@
             </div>
         </div>
     </div>
+    <script>
+        function liveSearch() {
+            var query = document.getElementById('searchInput').value.trim(); // Get the query from the input field
+            var searchResults = document.getElementById('searchResults'); // Get the container for search results
+
+            // Hide the search results container if the query is empty
+            if (query === "") {
+                searchResults.style.display = "none";
+                return; // Exit the function early if the query is empty
+            }
+
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function () {
+                if (this.readyState == 4 && this.status == 200) {
+                    // Update the search results container with the response
+                    searchResults.innerHTML = this.responseText;
+                    // Show or hide the search results container based on the response
+                    if (this.responseText.trim() !== "") {
+                        searchResults.style.display = "block";
+                    } else {
+                        searchResults.style.display = "none";
+                    }
+                }
+            };
+            xhttp.open("GET", "routes/searchRes.php?q=" + query, true); // Send GET request with the query
+            xhttp.send();
+            console.log(query);
+        }
+
+        // Attach event listener to input field to trigger live search
+        document.getElementById('searchInput').addEventListener('input', liveSearch);
+    </script>
     <?php include_once ("./includes/footer.php"); ?>
 </body>
 
