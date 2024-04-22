@@ -12,7 +12,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         if ($count == "0") {
             $date = date('Y-m-d');
             $ip_address = $_SERVER['REMOTE_ADDR'];
-            $sql = "INSERT INTO `users`(`id`, `full_name`, `email`, `mobile`, `password`, `sign_up_date`, `ip_address`) VALUES (null,'','','$mobile','','$date','$ip_address')";
+            $sql = "INSERT INTO `users`(`id`, `full_name`, `email`, `mobile`, `password`, `sign_up_date`, `ip_address`, `permissions`) VALUES (null,'','','$mobile','','$date','$ip_address', '0')";
             $rows = mysqli_query($conn, $sql);
             $lastID = mysqli_insert_id($conn);
 

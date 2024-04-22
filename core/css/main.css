@@ -3,7 +3,9 @@
 * {
     outline: none !important;
 }
-
+body {
+  background: #f2f9ff;
+}
 #backgroundEffect {
   background: url("../img/backgroundEffect.svg");
   background-size: cover;

@@ -9,6 +9,7 @@ if (!$conn == true) {
     echo "Database Error!";
 }
 session_start();
+$global_full_name = "";
 if (isset($_SESSION['username'])) {
     $user = $_SESSION["username"];
     $sql = "SELECT * FROM `users` WHERE `mobile`='$user'";

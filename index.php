@@ -37,12 +37,12 @@
                     <br />
                     <div class="flex flex-wrap flex-row gap-2 items-center">
                         <i class="bi bi-chat-dots-fill text-2xl text-orange-600"></i>
-                        <p class="text-xl font-semibold text-zinc-800">50 Lakh Doubts Solved</p>
+                        <p class="text-xl font-semibold text-zinc-800">50 Thousand Doubts Solved</p>
                     </div>
                     <br />
                     <div class="flex flex-wrap flex-row gap-2 items-center">
                         <i class="bi bi-stars text-2xl text-orange-600"></i>
-                        <p class="text-xl font-semibold text-zinc-800">Solutions backed by verified experts</p>
+                        <p class="text-xl font-semibold text-zinc-800">Solutions by verified experts</p>
                     </div>
                 </div>
                 <div class="flex-[1]">

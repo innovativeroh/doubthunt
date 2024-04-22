@@ -27,8 +27,7 @@
                 } else {
                     ?>
                     <button id="loginOTP"
-                        class="text-white py-2 px-4 rounded-3xl bg-orange-500 font-semibold hidden lg:block">Get
-                        Started <i class="bi bi-arrow-right"></i></button>
+                        class="text-white py-2 px-4 rounded-3xl bg-orange-500 font-semibold">Login <i class="bi bi-arrow-right"></i></button>
                     <button onclick="sidebarMenu()"><i class="bi bi-list ml-4 text-2xl"></i></button>
                     <?php
                 }
@@ -239,7 +238,7 @@ if ($global_full_name == "Student") {
                     </button>
                 </div>
                 <div class="flex flex-col gap-2 mt-2">
-                    <a href='logout.php'><button
+                    <a href='logout.php' class="w-full"><button
                         class="transition block w-full flex flex-start flex-row gap-2 items-center text-md bg-gray-100 p-2 rounded-lg pl-4 hover:bg-gray-200"><i
                             class="bi bi-box-arrow-left text-orange-500"></i>
                         <p class="text-md inline-block font-semibold text-zinc-800">Logout</p>
