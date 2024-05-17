@@ -1,3 +1,4 @@
+<?php include_once("connection.php");?>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -75,7 +76,11 @@
                     <h4
                       class="text-title-md font-bold text-black dark:text-white"
                     >
-                      0
+                      <?php
+                        $sql = "SELECT * FROM `users`";
+                        $query = mysqli_query($conn, $sql);
+                        echo $num_rows = mysqli_num_rows($query);
+                      ?>
                     </h4>
                     <span class="text-sm font-medium">Total Students</span>
                   </div>
@@ -137,7 +142,11 @@
                     <h4
                       class="text-title-md font-bold text-black dark:text-white"
                     >
-                      0
+                    <?php
+                        $sql = "SELECT * FROM `questions`";
+                        $query = mysqli_query($conn, $sql);
+                        echo $num_rows = mysqli_num_rows($query);
+                      ?>
                     </h4>
                     <span class="text-sm font-medium">Total Questions</span>
                   </div>
@@ -195,7 +204,11 @@
                     <h4
                       class="text-title-md font-bold text-black dark:text-white"
                     >
-                      0
+                    <?php
+                        $sql = "SELECT * FROM `answers`";
+                        $query = mysqli_query($conn, $sql);
+                        echo $num_rows = mysqli_num_rows($query);
+                      ?>
                     </h4>
                     <span class="text-sm font-medium">Total Answers</span>
                   </div>
