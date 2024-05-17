@@ -14,12 +14,20 @@ while ($row = mysqli_fetch_assoc($result)) {
         ?>
         <div class="transition p-4 py-2 flex items-center justify-between hover:bg-zinc-100">
             <div class="flex-[1] p-2">
-                <p class="font-semibold text-zinc-600"><?=$question?></p>
+                <a href='question.php?id=<?= $qID ?>' class="font-semibold text-zinc-600"><?= $question ?></a>
             </div>
             <i class="bi bi-box-arrow-up-right text-xs text-zinc-500"></i>
         </div>
-    <?php
-    } else {}
+        <?php
+    } else {
+    }
 }
 ?>
+
+
+<form action="send.php" method="GET" class="p-2">
+    <input type="hidden" name="quiz" value="<?=$query?>" />
+    <button type="submit" class="w-full p-2 bg-orange-400 text-white font-semibold rounded-xl text-sm">Cannot Find?
+        Submit Now!</form>
+</div>
 <script src="https://cdn.tailwindcss.com"></script>

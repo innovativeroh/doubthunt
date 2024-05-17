@@ -49,9 +49,6 @@
                         <p class="text-xl font-semibold text-zinc-800">Solutions by verified experts</p>
                     </div>
                 </div>
-                <div class="flex-[1]">
-                    <img src='./core/img/animation2.gif' class='w-full'>
-                </div>
             </div>
         </div>
     </div>
