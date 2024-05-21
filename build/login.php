@@ -74,66 +74,6 @@
               <div class="w-full border-stroke dark:border-strokedark xl:w-1/2 xl:border-l-2">
                 <div class="w-full p-4 sm:p-12.5 xl:p-17.5">
                   <form action="login.php" method="POST">
-                    <?php
-                    $uid = @$_POST['email'];
-                    $pwd = @$_POST['password'];
-                    if (isset($_POST['create'])) {
-                      //Error Handlers
-                      //Check if inputs are empty
-                      if (empty($uid) || empty($pwd)) {
-                        echo '<div class="flex items-center p-4 mb-4 text-sm text-red-800 border border-red-300 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400 dark:border-red-800" role="alert">
-                    <svg class="flex-shrink-0 inline w-4 h-4 me-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
-                      <path d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5ZM9.5 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM12 15H8a1 1 0 0 1 0-2h1v-3H8a1 1 0 0 1 0-2h2a1 1 0 0 1 1 1v4h1a1 1 0 0 1 0 2Z"/>
-                    </svg>
-                    <span class="sr-only">Info</span>
-                    <div>
-                      <span class="font-medium">Error!</span> Email and Password is Invalid!
-                    </div>
-                  </div>';
-                      } else {
-                        $sql = "SELECT * FROM users WHERE email='$uid'";
-                        $result = mysqli_query($conn, $sql);
-                        $resultCheck = mysqli_num_rows($result);
-                        if ($resultCheck < 1) {
-                          echo '<div class="flex items-center p-4 mb-4 text-sm text-red-800 border border-red-300 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400 dark:border-red-800" role="alert">
-                        <svg class="flex-shrink-0 inline w-4 h-4 me-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
-                          <path d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5ZM9.5 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM12 15H8a1 1 0 0 1 0-2h1v-3H8a1 1 0 0 1 0-2h2a1 1 0 0 1 1 1v4h1a1 1 0 0 1 0 2Z"/>
-                        </svg>
-                        <span class="sr-only">Info</span>
-                        <div>
-                          <span class="font-medium">Error!</span> Email Is Incorrect!
-                        </div>
-                      </div>';
-                        } else {
-
-                          if ($row = mysqli_fetch_assoc($result)) {
-                            $id_login = $row['id'];
-                            $username_login = $row['email'];
-                            $password_login = $row['password'];
-                            //dehashing the password        
-                            $hashedPwdCheck = password_verify($pwd, $row['password']);
-                            if ($hashedPwdCheck == false) {
-                              echo '<div class="flex items-center p-4 mb-4 text-sm text-red-800 border border-red-300 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400 dark:border-red-800" role="alert">
-                                <svg class="flex-shrink-0 inline w-4 h-4 me-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
-                                  <path d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5ZM9.5 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM12 15H8a1 1 0 0 1 0-2h1v-3H8a1 1 0 0 1 0-2h2a1 1 0 0 1 1 1v4h1a1 1 0 0 1 0 2Z"/>
-                                </svg>
-                                <span class="sr-only">Info</span>
-                                <div>
-                                  <span class="font-medium">Error!</span> Password is Incorrect!
-                                </div>
-                              </div>';
-                            } elseif ($hashedPwdCheck == true) {
-                              $_SESSION['id'] = $id_login;
-                              $_SESSION['username'] = $username_login;
-                              $_SESSION['password'] = $password_login;
-                              echo "<meta http-equiv=\"refresh\" content=\"0; url=index.php\">";
-                              exit();
-                            }
-                          }
-                        }
-                      }
-                    }
-                    ?>
                     <h2 class="mb-9 text-2xl font-bold text-black dark:text-white sm:text-title-xl2">
                       Sign In
                     </h2>

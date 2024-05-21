@@ -1,3 +1,4 @@
+<?php include_once ("./includes/connection.php"); ?>
 <script src="https://cdn.tailwindcss.com"></script>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 <link rel="stylesheet" href="./core/css/main.css" type="text/css">
@@ -18,7 +19,7 @@
                 <img src="./core/img/profilePic.jpg" class="w-[45px] rounded-full m-auto h-[45px]" />
             </div>
             <div class="flex-[8]">
-                <p class="text-sm text-gray-400">Administrator</p>
+                <p class="text-sm text-gray-400"><?=$power?></p>
                 <span class="text-sm text-gray-400">Online <i
                         class="bi bi-circle-fill text-green-400 text-xs pl-1"></i></span>
             </div>
@@ -50,7 +51,7 @@
     <div class="bg-white shadow-lg text-white p-4">
         <!-- Header content -->
         <button id="toggleSidebarBtn" class="text-gray-950 text-2xl"><i class="bi bi-list"></i></button>
-        Dashboard Header
+
     </div>
     <script>
         const sidebar = document.getElementById('sidebar');
