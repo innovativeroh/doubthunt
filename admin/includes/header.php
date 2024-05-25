@@ -26,20 +26,20 @@
         </div>
         <div class="mt-10">
             <span class="block mt-4 mb-4 font-bold text-sm text-gray-500">General</span>
-            <button class="w-full text-left rounded-xl py-2 px-4 bg-gray-900 text-white-500 mb-4"> <i
-                    class="bi bi-speedometer pr-2"></i> Dashboard</button>
+            <a href="dashboard.php" class="transition block w-full text-left rounded-xl py-2 px-4 hover:bg-gray-900 text-white-500 mb-4"> <i
+                    class="bi bi-speedometer pr-2"></i> Dashboard</a>
 
-            <button class="w-full text-left rounded-xl py-2 px-4 bg-gray-900 text-white-500 mb-4"> <i
-                    class="bi bi-speedometer pr-2"></i> Users</button>
+            <a href="users.php" class="transition w-full block text-left rounded-xl py-2 px-4 hover:bg-gray-900 text-white-500 mb-4"> <i
+                    class="bi bi-people-fill pr-2"></i> Users</a>
 
-            <button class="w-full text-left rounded-xl py-2 px-4 bg-gray-900 text-white-500 mb-4"> <i
-                    class="bi bi-speedometer pr-2"></i> Teachers</button>
+            <a href="teachers.php" class="transition w-full text-left block rounded-xl py-2 px-4 hover:bg-gray-900 text-white-500 mb-4"> <i
+                    class="bi bi-award-fill pr-2"></i> Teachers</a>
 
-            <button class="w-full text-left rounded-xl py-2 px-4 bg-gray-900 text-white-500 mb-4"> <i
-                    class="bi bi-speedometer pr-2"></i> Plans</button>
+            <a class="transition w-full text-left block rounded-xl py-2 px-4 hover:bg-gray-900 text-white-500 mb-4"> <i
+                    class="bi bi-bank pr-2"></i> Plans</a>
 
-            <button class="w-full text-left rounded-xl py-2 px-4 bg-gray-900 text-white-500 mb-4"> <i
-                    class="bi bi-speedometer pr-2"></i> Logout</button>
+            <a class="transition w-full text-left block rounded-xl py-2 px-4 hover:bg-gray-900 text-white-500 mb-4"> <i
+                    class="bi bi-box-arrow-left pr-2"></i> Logout</a>
         </div>
     </div>
     <!-- Hide Button Container -->
