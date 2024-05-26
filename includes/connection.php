@@ -24,6 +24,11 @@ if (isset($_SESSION['username'])) {
         }
         $global_mobile = $row["mobile"];
         $global_email = $row["email"];
+        if($global_email == "") {
+            $global_email = "info@doubthunt.com";
+        } else {
+            $global_email;
+        }
     }
 }
 else {
