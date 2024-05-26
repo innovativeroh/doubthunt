@@ -9,14 +9,26 @@ $code = @$_GET['success'];
     <meta charset="UTF-8">
     <?php include_once ("./includes/header.php"); ?>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Ask Question</title>
 </head>
-
 <body>
     <div>
         <br />
         <div class="mt-20 mb-10 max-w-[1280px] m-auto h-[600px] p-10">
             <div class="max-w-[650px] m-auto bg-white rounded-xl shadow-xl p-10">
+                <?php
+                $sql = "SELECT * FROM `active_plans` WHERE `userID`='$global_id' AND `expired`='1'";
+                $query = mysqli_query($conn, $sql);
+                $expiredCount = mysqli_num_rows($query);
+                $sql2 = "SELECT * FROM `active_plans` WHERE `userID`='$global_id'";
+                $query2 = mysqli_query($conn, $sql2);
+                $nonExpiredCount = mysqli_num_rows($query2);
+                $cal = $nonExpiredCount - $expiredCount;
+                if ($cal == "0") {
+                    echo "<meta http-equiv=\"refresh\" content=\"0; url=plans.php\">";
+                    exit();
+                }
+                ?>
                 <?php
                 $date = date("Y-m-d");
                 if (isset($_POST['ask'])) {
@@ -27,12 +39,12 @@ $code = @$_GET['success'];
                 }
                 if ($code == "1") {
                     ?>
-                        <center>
-                            <img src='./core/img/tick.gif' class="max-w-[300px]">
-                            <h1 class="font-bold text-orange-500 text-3xl">Submitted!</h1>
-                            <h1 class="font-light font-xl">Will be resolved soon!!</h1>
-                            <a href='#' class="mt-4 py-2 px-4 text-white bg-orange-400 rounded-xl inline-">Back To Home</a>
-                        </center>
+                    <center>
+                        <img src='./core/img/tick.gif' class="max-w-[300px]">
+                        <h1 class="font-bold text-orange-500 text-3xl">Submitted!</h1>
+                        <h1 class="font-light font-xl">Will be resolved soon!!</h1>
+                        <a href='#' class="mt-4 py-2 px-4 text-white bg-orange-400 rounded-xl inline-">Back To Home</a>
+                    </center>
                     <?php
                 } else {
                     ?>

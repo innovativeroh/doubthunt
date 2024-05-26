@@ -12,22 +12,39 @@
             </div>
             <div class="flex-[1]">
                 <nav class="justify-center gap-10 hidden lg:flex">
-                    <a href="" class="font-semibold text-slate-950">Solve</a>
-                    <a href="" class="font-semibold text-slate-950">Guides</a>
+                    <a href="#" class="font-semibold text-slate-950">Solve</a>
+                    <a href="#" class="font-semibold text-slate-950">Guides</a>
                 </nav>
             </div>
             <div class="flex-[1] justify-end flex">
                 <?php
                 if (isset($_SESSION['username'])) {
+                    $sql = "SELECT * FROM `active_plans` WHERE `userID`='$global_id' AND `expired`='0'";
+                    $query = mysqli_query($conn, $sql);
+                    $count = mysqli_num_rows($query);
+                    if ($count == "1") {
+                        $row = mysqli_fetch_assoc($query);
+                        $limitUse = $row['limitUse'];
+                        ?>
+                        <button class="mr-[10px] border-[1px] py-2 px-4 rounded-3xl bg-gray-100"><i class="bi bi-wallet"></i>
+                            <?= $limitUse ?></button>
+                        <?php
+                    } else {
+                        ?>
+                        <a href="plans.php"><button class="mr-[10px] border-[1px] text-orange-500 py-2 px-4 rounded-3xl" title="Subscribe"><i
+                                class="bi bi-wallet"></i> 0</button></a>
+                        <?php
+                    }
                     ?>
+
                     <button class="text-white py-2 px-4 rounded-3xl bg-orange-500 font-semibold hidden lg:block"><i
                             class="bi bi-person-circle"></i> <?= $global_full_name ?></button>
                     <button onclick="sidebarMenu()"><i class="bi bi-list ml-4 text-2xl"></i></button>
                     <?php
                 } else {
                     ?>
-                    <button id="loginOTP"
-                        class="text-white py-2 px-4 rounded-3xl bg-orange-500 font-semibold">Login <i class="bi bi-arrow-right"></i></button>
+                    <button id="loginOTP" class="text-white py-2 px-4 rounded-3xl bg-orange-500 font-semibold">Login <i
+                            class="bi bi-arrow-right"></i></button>
                     <button onclick="sidebarMenu()"><i class="bi bi-list ml-4 text-2xl"></i></button>
                     <?php
                 }
@@ -188,15 +205,15 @@ if ($global_full_name == "Student") {
                     <label for="name" class="text-xs mt-4 block"> Standard <br />
                         <select name="standard" class="text-sm mt-2 p-2 border-[1px] border-zinc-200 w-full rounded-lg">
                             <?php
-                                $sql = "SELECT * FROM `config_standards`";
-                                $query = mysqli_query($conn, $sql);
-                                while($rows = mysqli_fetch_assoc($query)) {
-                                    $idValue = $rows['id'];
-                                    $value = $rows['value'];
-                                    ?>
-                            <option value="<?=$idValue?>"><?=$value?></option>
-                                    <?php
-                                }
+                            $sql = "SELECT * FROM `config_standards`";
+                            $query = mysqli_query($conn, $sql);
+                            while ($rows = mysqli_fetch_assoc($query)) {
+                                $idValue = $rows['id'];
+                                $value = $rows['value'];
+                                ?>
+                                <option value="<?= $idValue ?>"><?= $value ?></option>
+                                <?php
+                            }
                             ?>
                         </select>
                     </label>
@@ -224,74 +241,74 @@ if ($global_full_name == "Student") {
                     class="bi bi-arrow-left text-2xl text-gray-500"></i></button>
             <br />
             <?php
-                if (isset($_SESSION['username'])) {
-                    ?>
-            <div class="mt-4 w-full p-2 flex flex-col gap-1">
-                <h1 class="text-xl font-semibold">Welcome,</h1>
-                <p class="text-md"><?= $global_full_name; ?></p>
-                <hr class="h-[1px] bg-zinc-100 border-none w-full mt-2 mb-2" />
-                <span class="text-zinc-400 text-xs tracking-widest">Menus</span>
-                <div class="flex flex-col gap-2 mt-2">
-                    <button
-                        class="transition flex flex-start flex-row gap-2 items-center text-md bg-gray-100 p-2 rounded-lg pl-4 hover:bg-gray-200"><i
-                            class="bi bi-app-indicator text-orange-500"></i>
-                        <p class="text-md inline-block font-semibold text-zinc-800">Dashboard</p>
-                    </button>
-                </div>
-                <div class="flex flex-col gap-2 mt-2">
-                    <button
-                        class="transition flex flex-start flex-row gap-2 items-center text-md bg-gray-100 p-2 rounded-lg pl-4 hover:bg-gray-200"><i
-                            class="bi bi-puzzle text-orange-500"></i>
-                        <p class="text-md inline-block font-semibold text-zinc-800">Solve</p>
-                    </button>
-                </div>
-                <div class="flex flex-col gap-2 mt-2">
-                    <button
-                        class="transition flex flex-start flex-row gap-2 items-center text-md bg-gray-100 p-2 rounded-lg pl-4 hover:bg-gray-200"><i
-                            class="bi bi-journal text-orange-500"></i>
-                        <p class="text-md inline-block font-semibold text-zinc-800">Guides</p>
-                    </button>
-                </div>
-                <div class="flex flex-col gap-2 mt-2">
-                    <a href='logout.php' class="w-full"><button
-                        class="transition block w-full flex flex-start flex-row gap-2 items-center text-md bg-gray-100 p-2 rounded-lg pl-4 hover:bg-gray-200"><i
-                            class="bi bi-box-arrow-left text-orange-500"></i>
-                        <p class="text-md inline-block font-semibold text-zinc-800">Logout</p>
-                    </button></a>
-                </div>
-            </div>
-            <?php
-                } else {
-            ?>
+            if (isset($_SESSION['username'])) {
+                ?>
                 <div class="mt-4 w-full p-2 flex flex-col gap-1">
-                <h1 class="text-xl font-semibold">Welcome,</h1>
-                <p class="text-md">Guest</p>
-                <hr class="h-[1px] bg-zinc-100 border-none w-full mt-2 mb-2" />
-                <span class="text-zinc-400 text-xs tracking-widest">Menus</span>
-                <div class="flex flex-col gap-2 mt-2">
-                    <button
-                        class="transition flex flex-start flex-row gap-2 items-center text-md bg-gray-100 p-2 rounded-lg pl-4 hover:bg-gray-200"><i
-                            class="bi bi-house text-orange-500"></i>
-                        <p class="text-md inline-block font-semibold text-zinc-800">Home</p>
-                    </button>
+                    <h1 class="text-xl font-semibold">Welcome,</h1>
+                    <p class="text-md"><?= $global_full_name; ?></p>
+                    <hr class="h-[1px] bg-zinc-100 border-none w-full mt-2 mb-2" />
+                    <span class="text-zinc-400 text-xs tracking-widest">Menus</span>
+                    <div class="flex flex-col gap-2 mt-2">
+                        <button
+                            class="transition flex flex-start flex-row gap-2 items-center text-md bg-gray-100 p-2 rounded-lg pl-4 hover:bg-gray-200"><i
+                                class="bi bi-app-indicator text-orange-500"></i>
+                            <p class="text-md inline-block font-semibold text-zinc-800">Dashboard</p>
+                        </button>
+                    </div>
+                    <div class="flex flex-col gap-2 mt-2">
+                        <button
+                            class="transition flex flex-start flex-row gap-2 items-center text-md bg-gray-100 p-2 rounded-lg pl-4 hover:bg-gray-200"><i
+                                class="bi bi-puzzle text-orange-500"></i>
+                            <p class="text-md inline-block font-semibold text-zinc-800">Solve</p>
+                        </button>
+                    </div>
+                    <div class="flex flex-col gap-2 mt-2">
+                        <button
+                            class="transition flex flex-start flex-row gap-2 items-center text-md bg-gray-100 p-2 rounded-lg pl-4 hover:bg-gray-200"><i
+                                class="bi bi-journal text-orange-500"></i>
+                            <p class="text-md inline-block font-semibold text-zinc-800">Guides</p>
+                        </button>
+                    </div>
+                    <div class="flex flex-col gap-2 mt-2">
+                        <a href='logout.php' class="w-full"><button
+                                class="transition block w-full flex flex-start flex-row gap-2 items-center text-md bg-gray-100 p-2 rounded-lg pl-4 hover:bg-gray-200"><i
+                                    class="bi bi-box-arrow-left text-orange-500"></i>
+                                <p class="text-md inline-block font-semibold text-zinc-800">Logout</p>
+                            </button></a>
+                    </div>
                 </div>
-                <div class="flex flex-col gap-2 mt-2">
-                    <button
-                        class="transition flex flex-start flex-row gap-2 items-center text-md bg-gray-100 p-2 rounded-lg pl-4 hover:bg-gray-200"><i
-                            class="bi bi-puzzle text-orange-500"></i>
-                        <p class="text-md inline-block font-semibold text-zinc-800">Solve</p>
-                    </button>
+                <?php
+            } else {
+                ?>
+                <div class="mt-4 w-full p-2 flex flex-col gap-1">
+                    <h1 class="text-xl font-semibold">Welcome,</h1>
+                    <p class="text-md">Guest</p>
+                    <hr class="h-[1px] bg-zinc-100 border-none w-full mt-2 mb-2" />
+                    <span class="text-zinc-400 text-xs tracking-widest">Menus</span>
+                    <div class="flex flex-col gap-2 mt-2">
+                        <button
+                            class="transition flex flex-start flex-row gap-2 items-center text-md bg-gray-100 p-2 rounded-lg pl-4 hover:bg-gray-200"><i
+                                class="bi bi-house text-orange-500"></i>
+                            <p class="text-md inline-block font-semibold text-zinc-800">Home</p>
+                        </button>
+                    </div>
+                    <div class="flex flex-col gap-2 mt-2">
+                        <button
+                            class="transition flex flex-start flex-row gap-2 items-center text-md bg-gray-100 p-2 rounded-lg pl-4 hover:bg-gray-200"><i
+                                class="bi bi-puzzle text-orange-500"></i>
+                            <p class="text-md inline-block font-semibold text-zinc-800">Solve</p>
+                        </button>
+                    </div>
+                    <div class="flex flex-col gap-2 mt-2">
+                        <button
+                            class="transition flex flex-start flex-row gap-2 items-center text-md bg-gray-100 p-2 rounded-lg pl-4 hover:bg-gray-200"><i
+                                class="bi bi-journal text-orange-500"></i>
+                            <p class="text-md inline-block font-semibold text-zinc-800">Guides</p>
+                        </button>
+                    </div>
                 </div>
-                <div class="flex flex-col gap-2 mt-2">
-                    <button
-                        class="transition flex flex-start flex-row gap-2 items-center text-md bg-gray-100 p-2 rounded-lg pl-4 hover:bg-gray-200"><i
-                            class="bi bi-journal text-orange-500"></i>
-                        <p class="text-md inline-block font-semibold text-zinc-800">Guides</p>
-                    </button>
-                </div>
-                </div>
-            <?php
-                }
+                <?php
+            }
             ?>
         </div>
     </div>

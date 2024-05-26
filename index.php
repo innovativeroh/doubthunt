@@ -13,7 +13,7 @@
         <div class="max-w-[1280px] m-auto">
             <br>
             <div
-                class="flex-wrap p-[40px] flex-col flex items-center h-auto lg:h-screen lg:flex-row gap-20 mt-20 lg:mt-0">
+                class="flex-wrap p-[40px] flex-col flex items-center h-auto pt-40 pb-40 lg:h-screen lg:flex-row gap-20 mt-20 lg:mt-0">
                 <div class="flex-[1.5]">
                     <h1 class="text-4xl leading-[40px] lg:text-5xl lg:leading-[60px] font-bold text-gray-800">Get
                         <span class="text-orange-400">Best Solutions</span> For Doubts & <span
