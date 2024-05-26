@@ -35,8 +35,8 @@ if (isset($_SESSION['username'])) {
                                 Mobile</th>
                             <th class="px-4 py-4 text-left text-xs font-semibold text-white uppercase tracking-wider">
                                 Sign Up Date</th>
-                            <th class="px-4 py-4 text-left text-xs font-semibold text-white uppercase tracking-wider">IP
-                                Address</th>
+                            <th class="px-4 py-4 text-left text-xs font-semibold text-white uppercase tracking-wider">
+                                Standard</th>
                             <th class="px-4 py-4 text-left text-xs font-semibold text-white uppercase tracking-wider">
                                 Actions</th>
                         </tr>
@@ -52,6 +52,16 @@ if (isset($_SESSION['username'])) {
                             $mobile = $rows['mobile'];
                             $date = $rows['sign_up_date'];
                             $ip_address = $rows['ip_address'];
+                            $standard_Val = $rows['standard'];
+                            $sql2 = "SELECT * FROM `config_standards` WHERE `id`='$standard_Val'";
+                            $query2 = mysqli_query($conn, $sql2);
+                            $row = mysqli_fetch_assoc($query2);
+                            $standard = $row['value'];
+                            if($standard == "") {
+                                $standard = "None";
+                            } else {
+                                $standard;
+                            }
                             ?>
                             <tr class="border-b border-gray-200">
                                 <td class="px-4 py-4 whitespace-nowrap">1</td>
@@ -59,10 +69,10 @@ if (isset($_SESSION['username'])) {
                                 <td class="px-4 py-4 whitespace-nowrap"><?= $email ?></td>
                                 <td class="px-4 py-4 whitespace-nowrap"><?= $mobile ?></td>
                                 <td class="px-4 py-4 whitespace-nowrap"><?= $date ?></td>
-                                <td class="px-4 py-4 whitespace-nowrap"><?= $ip_address ?></td>
+                                <td class="px-4 py-4 whitespace-nowrap"><?= $standard ?></td>
                                 <td class="px-4 py-4 whitespace-nowrap">
-                                    <button
-                                        class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Edit</button>
+                                    <!-- <button
+                                        class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Edit</button> -->
                                     <a href="delete_user.php?id=<?= $userID ?>"
                                         class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded ml-2">Delete</a>
                                 </td>

@@ -185,6 +185,21 @@ if ($global_full_name == "Student") {
                         <input type="email" name="email" placeholder="eg. someone@something.com"
                             class="text-sm mt-2 p-2 border-[1px] border-zinc-200 w-full rounded-lg" required />
                     </label>
+                    <label for="name" class="text-xs mt-4 block"> Standard <br />
+                        <select name="standard" class="text-sm mt-2 p-2 border-[1px] border-zinc-200 w-full rounded-lg">
+                            <?php
+                                $sql = "SELECT * FROM `config_standards`";
+                                $query = mysqli_query($conn, $sql);
+                                while($rows = mysqli_fetch_assoc($query)) {
+                                    $idValue = $rows['id'];
+                                    $value = $rows['value'];
+                                    ?>
+                            <option value="<?=$idValue?>"><?=$value?></option>
+                                    <?php
+                                }
+                            ?>
+                        </select>
+                    </label>
                     <button type="submit"
                         class="transition w-full bg-orange-500 p-2 rounded-lg font-semibold mt-4 text-white hover:bg-orange-600">Complete
                         <i class="bi bi-arrow-right"></i></button>

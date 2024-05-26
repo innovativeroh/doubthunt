@@ -130,9 +130,11 @@ if (isset($_SESSION['username'])) {
                     </thead>
                     <tbody>
                         <?php
+                            $i=0;
                             $sql = "SELECT * FROM `users` WHERE `permissions`='2'";
                             $query = mysqli_query($conn, $sql);
                             while ($rows = mysqli_fetch_assoc($query)) {
+                                $userID = $rows['id'];
                                 $full_name = $rows['full_name'];
                                 $email = $rows['email'];
                                 $mobile = $rows['mobile'];
@@ -143,9 +145,10 @@ if (isset($_SESSION['username'])) {
                                 $row = mysqli_fetch_assoc($query2);
                                 $master_subject = $row['value'];
                                 $ip_address = $rows['ip_address'];
+                                $i++;
                                 ?>
                                 <tr class="border-b border-gray-200">
-                                <td class="px-4 py-4 whitespace-nowrap">1</td>
+                                <td class="px-4 py-4 whitespace-nowrap"><?=$i?></td>
                                 <td class="px-4 py-4 whitespace-nowrap"><?= $full_name ?></td>
                                 <td class="px-4 py-4 whitespace-nowrap"><?= $email ?></td>
                                 <td class="px-4 py-4 whitespace-nowrap"><?= $mobile ?></td>
@@ -153,10 +156,12 @@ if (isset($_SESSION['username'])) {
                                 <td class="px-4 py-4 whitespace-nowrap"><?= $ip_address ?></td>
                                 <td class="px-4 py-4 whitespace-nowrap"><?= $master_subject ?></td>
                                 <td class="px-4 py-4 whitespace-nowrap">
-                                    <button
-                                        class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Edit</button>
-                                    <button
-                                        class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded ml-2">Delete</button>
+                                    <!-- <button
+                                        class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Edit</button> -->
+                                        <a href="teacher.php"
+                                        class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded ml-2"><i class="bi bi-eye"></i></a>
+                                        <a href="delete_teacher.php?id=<?=$userID?>"
+                                        class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded ml-2">Delete</a>
                                 </td>
                                 </tr>
                                 <?php
