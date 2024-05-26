@@ -35,7 +35,7 @@
             <a href="teachers.php" class="transition w-full text-left block rounded-xl py-2 px-4 hover:bg-gray-900 text-white-500 mb-4"> <i
                     class="bi bi-award-fill pr-2"></i> Teachers</a>
 
-            <a class="transition w-full text-left block rounded-xl py-2 px-4 hover:bg-gray-900 text-white-500 mb-4"> <i
+            <a href="plans.php" class="transition w-full text-left block rounded-xl py-2 px-4 hover:bg-gray-900 text-white-500 mb-4"> <i
                     class="bi bi-bank pr-2"></i> Plans</a>
 
             <a class="transition w-full text-left block rounded-xl py-2 px-4 hover:bg-gray-900 text-white-500 mb-4"> <i
