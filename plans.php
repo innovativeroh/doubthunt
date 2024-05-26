@@ -1,8 +1,13 @@
 <?php
 include_once ("./includes/header.php");
-
-// Ensure the necessary variables are defined
-$global_name = $global_full_name; // Example default value, replace with actual logic
+$global_name = $global_full_name;
+$sql = "SELECT * FROM `active_plans` WHERE `userID`='$global_id' AND `expired`='0'";
+$query = mysqli_query($conn, $sql);
+$count = mysqli_num_rows($query);
+if($count > 0) {
+    echo "<meta http-equiv=\"refresh\" content=\"0; url=index.php\">";
+    exit();
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -52,7 +57,7 @@ $(document).ready(function() {
                         window.location.href = 'index.php';
                     },
                     error: function(response) {
-                        window.location.href = 'index.php';
+                        window.location.href = 'plans.php?error=404';
                     }
                 });
             },
