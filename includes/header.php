@@ -8,7 +8,10 @@
     <div class="max-w-[1280px] m-auto">
         <div class="flex flex-wrap justify-center items-center">
             <div class="flex-[1]">
-                <a href='index.php'><img src='./core/img/logoMain.png'></a>
+                <div class="flex flex-start items-center">
+                <a href='index.php'><img src='./core/img/logo.png' class="w-[15px]"></a>
+                <p class="font-bold text-lg text-zinc-700">oubtHunt</p>
+                </div>
             </div>
             <div class="flex-[1]">
                 <nav class="justify-center gap-10 hidden lg:flex">
