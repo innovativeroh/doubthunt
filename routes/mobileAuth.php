@@ -26,7 +26,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             curl_setopt_array(
                 $curl,
                 array(
-                    CURLOPT_URL => "https://www.fast2sms.com/dev/bulkV2?authorization=nqelRQ71stwD3yGcJPEYhg20FSXV6CixjbIMmTBpfWLU4HuKNreTUCW15jwAzvtODxr6gsiMuo8aqNFy&variables_values=$random_number&route=otp&numbers=" . urlencode($mobile),
+                    CURLOPT_URL => "https://www.fast2sms.com/dev/bulkV2?authorization=zUcBVJ4fNgq7bWLESOIxmlrDiyTPsQ3uMtjhkdoRCFv5wYpXa2xhprVatY8cLgbCKqT2oRHvluisSX6m&variables_values=$random_number&route=otp&numbers=" . urlencode($mobile),
                     CURLOPT_RETURNTRANSFER => true,
                     CURLOPT_ENCODING => "",
                     CURLOPT_MAXREDIRS => 10,
@@ -71,7 +71,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             curl_setopt_array(
                 $curl,
                 array(
-                    CURLOPT_URL => "https://www.fast2sms.com/dev/bulkV2?authorization=nqelRQ71stwD3yGcJPEYhg20FSXV6CixjbIMmTBpfWLU4HuKNreTUCW15jwAzvtODxr6gsiMuo8aqNFy&variables_values=$random_number&route=otp&numbers=" . urlencode($mobile),
+                    CURLOPT_URL => "https://www.fast2sms.com/dev/bulkV2?authorization=zUcBVJ4fNgq7bWLESOIxmlrDiyTPsQ3uMtjhkdoRCFv5wYpXa2xhprVatY8cLgbCKqT2oRHvluisSX6m&variables_values=$random_number&route=otp&numbers=" . urlencode($mobile),
                     CURLOPT_RETURNTRANSFER => true,
                     CURLOPT_ENCODING => "",
                     CURLOPT_MAXREDIRS => 10,
