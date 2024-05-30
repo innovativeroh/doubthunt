@@ -18,3 +18,12 @@ body {
     rgba(17, 17, 17, 0.2) 100%
   );
 }
+
+#OcrOverlay {
+  background: rgb(17, 17, 17);
+  background: linear-gradient(
+    90deg,
+    rgba(17, 17, 17, 0.2) 0%,
+    rgba(17, 17, 17, 0.2) 100%
+  );
+}
