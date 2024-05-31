@@ -26,10 +26,10 @@
     //End Of Getting The Answer
 
     //Getting The Category
-    $sql3 = "SELECT * FROM `configcategory` WHERE id='$categoryID'";
+    $sql3 = "SELECT * FROM `config_subject` WHERE id='$categoryID'";
     $query3 = mysqli_query($conn, $sql3);
     $rowss = mysqli_fetch_assoc($query3);
-    $name = $rowss['name'];
+    $name = $rowss['value'];
     //End Of Getting The Category
 ?>
 <body>

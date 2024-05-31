@@ -83,6 +83,9 @@
                         </div>
                     </div>
                     <div class="flex-[7]">
+                        <?php
+                        if($global_permissions == "") {
+                        ?>
                         <div class="bg-white shadow-xl p-6 border-[1px]">
                             <div class="flex flex-wrap justify-between items-center">
                                 <h1 class="text-xl font-semibold">Questions</h1>
@@ -142,6 +145,9 @@
                                 loadQuestions();
                             </script>
                         </div>
+                        <?php
+                        }
+                        ?>
                         <div class="bg-white shadow-xl p-6 border-[1px] mt-4">
                             <h1 class="text-xl font-semibold">Solved</h1>
                             <table class="table-auto mt-4 w-full bg-white">
