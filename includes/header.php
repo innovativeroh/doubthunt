@@ -252,11 +252,11 @@ if ($global_full_name == "Student") {
                     <hr class="h-[1px] bg-zinc-100 border-none w-full mt-2 mb-2" />
                     <span class="text-zinc-400 text-xs tracking-widest">Menus</span>
                     <div class="flex flex-col gap-2 mt-2">
-                        <button
-                            class="transition flex flex-start flex-row gap-2 items-center text-md bg-gray-100 p-2 rounded-lg pl-4 hover:bg-gray-200"><i
+                        <a href="dashboard.php"
+                            class="transition block flex flex-start flex-row gap-2 items-center text-md bg-gray-100 p-2 rounded-lg pl-4 hover:bg-gray-200"><i
                                 class="bi bi-app-indicator text-orange-500"></i>
                             <p class="text-md inline-block font-semibold text-zinc-800">Dashboard</p>
-                        </button>
+                        </a>
                     </div>
                     <div class="flex flex-col gap-2 mt-2">
                         <button
