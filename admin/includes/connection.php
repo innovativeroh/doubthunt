@@ -26,9 +26,9 @@ if (isset($_SESSION['username'])) {
         $global_email = $row["email"];
         $global_permissions = $row["permissions"];
     }
-    if($global_permissions = "1") {
+    if($global_permissions == "1") {
         $power = "Administrator";
-    } else if($global_permissions = "2") {
+    } else if($global_permissions == "2") {
         $power = "Teacher";
     } else {
         $power = "Student";
