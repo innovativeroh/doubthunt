@@ -18,6 +18,11 @@ $code = @$_GET['success'];
         <div class="mt-20 mb-10 max-w-[1280px] m-auto h-[600px] p-10">
             <div class="max-w-[650px] m-auto bg-white rounded-xl shadow-xl p-10">
                 <?php
+                if ($limitUse <= 0) {
+                    echo "<meta http-equiv=\"refresh\" content=\"0; url=plans.php\">";
+                    exit();
+                } else {
+                }
                 $sql = "SELECT * FROM `active_plans` WHERE `userID`='$global_id' AND `expired`='1'";
                 $query = mysqli_query($conn, $sql);
                 $expiredCount = mysqli_num_rows($query);
@@ -74,7 +79,7 @@ $code = @$_GET['success'];
                                     $id = $row['id'];
                                     $value = $row['value'];
                                     ?>
-                                <option value="<?=$id?>"><?=$value?></option>
+                                    <option value="<?= $id ?>"><?= $value ?></option>
                                     <?php
                                 }
                                 ?>

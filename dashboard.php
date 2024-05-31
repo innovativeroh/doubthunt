@@ -11,8 +11,8 @@
 <body>
     <br />
     <div class="mt-[100px] mb-[50px]">
-        <div class="m-auto max-w-[1200px]">
-            <div class="flex flex-wrap gap-10">
+        <div class="m-auto max-w-[1200px] p-4">
+            <div class="flex flex-wrap gap-10 flex-col lg:flex-row">
                 <div class="flex-[1]">
                     <div class="bg-white p-4 border-[1px]">
                         <h1 class="font-semibold text-2xl">My Questions</h1>
@@ -26,6 +26,9 @@
                                         <th
                                             class="px-4 py-4 text-left text-xs font-semibold text-white uppercase tracking-wider">
                                             Question</th>
+                                            <th
+                                            class="px-4 py-4 text-left text-xs font-semibold text-white uppercase tracking-wider">
+                                            Action</th>
                                     </tr>
                                 </thead>
                                 <tbody id="questions-table">
@@ -46,7 +49,7 @@
                                         $i++;
                                         echo "<tr class='border-b border-gray-200'>
                                                 <td class='px-4 py-4 whitespace-nowrap'>$i</td>
-                                                <td class='px-4 py-4 whitespace-nowrap'>$question</td>
+                                                <td class='px-4 py-4'>$question</td>
                                               </tr>";
                                     }                                    
                                     ?>
@@ -67,6 +70,9 @@
                                         <th
                                             class="px-4 py-4 text-left text-xs font-semibold text-white uppercase tracking-wider">
                                             Question</th>
+                                            <th
+                                            class="px-4 py-4 text-left text-xs font-semibold text-white uppercase tracking-wider">
+                                            Action</th>
                                     </tr>
                                 </thead>
                                 <tbody id="questions-table">
@@ -85,7 +91,11 @@
                                         $i++;
                                         echo "<tr class='border-b border-gray-200'>
                                                 <td class='px-4 py-4 whitespace-nowrap'>$i</td>
-                                                <td class='px-4 py-4 whitespace-nowrap'>$question</td>
+                                                <td class='px-4 py-4'>$question</td>
+                                                <td class='px-4 py-4'>
+                                                <a href='question.php?id=$id'
+                                                    class='bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded ml-2'>View</a>
+                                            </td>
                                               </tr>";
                                     }                                    
                                     ?>

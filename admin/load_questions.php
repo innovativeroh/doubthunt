@@ -18,7 +18,7 @@ while ($row = mysqli_fetch_assoc($query)) {
     $i++;
     echo "<tr class='border-b border-gray-200'>
             <td class='px-4 py-4 whitespace-nowrap'>$i</td>
-            <td class='px-4 py-4 whitespace-nowrap'>$question</td>
+            <td class='px-4 py-4'>$question</td>
             <td class='px-4 py-4 whitespace-nowrap'>
                 <a href='answer.php?id=$id' class='bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded ml-2'>Pick</a>
             </td>

@@ -40,7 +40,7 @@
             $sql2 = "SELECT * FROM `config_subject` WHERE `id`='$teacher_master'";
             $query2 = mysqli_query($conn, $sql2);
             $rows = mysqli_fetch_array($query2);
-            $teacher_grade = $rows['value'];
+            @$teacher_grade = $rows['value'];
             ?>
             <br />
             <div class="max-w-[1200px] m-auto p-10">
@@ -84,7 +84,7 @@
                     </div>
                     <div class="flex-[7]">
                         <?php
-                        if($global_permissions == "") {
+                        if($global_permissions == "2") {
                         ?>
                         <div class="bg-white shadow-xl p-6 border-[1px]">
                             <div class="flex flex-wrap justify-between items-center">
