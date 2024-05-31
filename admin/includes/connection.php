@@ -10,6 +10,7 @@ if (!$conn == true) {
 }
 session_start();
 $global_full_name = "";
+$global_master = "";
 if (isset($_SESSION['username'])) {
     $user = $_SESSION["username"];
     $sql = "SELECT * FROM `users` WHERE `email`='$user'";
@@ -25,6 +26,7 @@ if (isset($_SESSION['username'])) {
         $global_mobile = $row["mobile"];
         $global_email = $row["email"];
         $global_permissions = $row["permissions"];
+        $global_master = $row['master'];
     }
     if($global_permissions == "1") {
         $power = "Administrator";
