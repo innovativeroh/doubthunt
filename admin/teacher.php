@@ -180,7 +180,7 @@
                                             <td class="px-4 py-4 whitespace-nowrap">
                                                 <!-- <button
                                         class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Edit</button> -->
-                                                <a href="#"
+                                                <a href="view.php?id=<?=$id?>"
                                                     class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded ml-2">View</a>
                                             </td>
                                         </tr>
