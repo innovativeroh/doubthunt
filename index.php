@@ -9,7 +9,7 @@
     ?>
     <div class="w-full h-screen z-[10] fixed" id="OcrOverlay" style="display: none;">
         <div
-            class="w-[500px] bg-white z-[20] shadow-lg rounded-lg top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 absolute">
+            class="w-[350px] lg:w-[500px] bg-white z-[20] shadow-lg rounded-lg top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 absolute">
             <div>
                 <div class="p-4 absolute z-[20] top-[0] right-[0]">
                     <button class="float-right" onclick="hideOcrOverlay()"><i
@@ -19,35 +19,43 @@
     if (isset($_SESSION['username'])) {
         ?>
 <form id="uploadForm" action="upload.php" method="post" enctype="multipart/form-data">
-                    <div
-                        class="p-4 w-full flex mt-[45px] w-full flex-col justify-center items-center gap-8 border-dashed border-[1px]">
-                        <div id="preview" class="text-sm font-semibold text-gray-400">No file selected</div>
-                        <input type="file" id="fileInput" name="fileToUpload" class="block bg-zinc-100 p-2">
-                        <button type="submit" id="uploadButton" name="submit"
-                            class="transition disabled:bg-zinc-200 hover:bg-black bg-orange-500 w-full py-2 text-white font-semibold"
-                            disabled>Upload</button>
-                        <script>
-                            document.getElementById('fileInput').addEventListener('change', function (event) {
-                                const preview = document.getElementById('preview');
-                                const uploadButton = document.getElementById('uploadButton');
-                                preview.innerHTML = ''; // Clear previous content
+<div class="p-4 w-full flex mt-[45px] w-full flex-col justify-center items-center gap-8 border-dashed border-[1px]">
+    <div id="preview" class="text-sm font-semibold text-gray-400 max-w-full h-auto"></div>
+    <input type="file" id="fileInput" name="fileToUpload" class="block bg-zinc-100 p-2">
+    <button type="submit" id="uploadButton" name="submit" class="transition disabled:bg-zinc-200 hover:bg-black bg-orange-500 w-full py-2 text-white font-semibold" disabled>Upload</button>
+</div>
 
-                                const file = event.target.files[0];
-                                if (file) {
-                                    const reader = new FileReader();
-                                    reader.onload = function (e) {
-                                        const img = document.createElement('img');
-                                        img.src = e.target.result;
-                                        preview.appendChild(img);
-                                    }
-                                    reader.readAsDataURL(file);
-                                    uploadButton.disabled = false; // Enable the upload button
-                                } else {
-                                    preview.textContent = 'No file selected';
-                                    uploadButton.disabled = true; // Disable the upload button
-                                }
-                            });
-                        </script>
+<style>
+    /* Add this CSS */
+    #preview img {
+        max-width: 100%; /* Ensure the image doesn't exceed its container */
+        height: auto; /* Maintain aspect ratio */
+    }
+</style>
+
+<script>
+    document.getElementById('fileInput').addEventListener('change', function (event) {
+        const preview = document.getElementById('preview');
+        const uploadButton = document.getElementById('uploadButton');
+        preview.innerHTML = ''; // Clear previous content
+
+        const file = event.target.files[0];
+        if (file) {
+            const reader = new FileReader();
+            reader.onload = function (e) {
+                const img = document.createElement('img');
+                img.src = e.target.result;
+                preview.appendChild(img);
+            }
+            reader.readAsDataURL(file);
+            uploadButton.disabled = false; // Enable the upload button
+        } else {
+            preview.textContent = 'No file selected';
+            uploadButton.disabled = true; // Disable the upload button
+        }
+    });
+</script>
+
                 </form>
         <?php
     } else {
