@@ -58,6 +58,11 @@
                     class="transition block w-full text-left rounded-xl py-2 px-4 hover:bg-gray-900 text-white-500 mb-4"> <i
                         class="bi bi-speedometer pr-2"></i> Dashboard</a>
 
+                        <a href="teacher.php"
+                    class="transition block w-full text-left rounded-xl py-2 px-4 hover:bg-gray-900 text-white-500 mb-4"> <i
+                        class="bi bi-alt pr-2"></i> Teacher Panel</a>
+
+
                 <a href="logout.php"
                     class="transition w-full text-left block rounded-xl py-2 px-4 hover:bg-gray-900 text-white-500 mb-4"> <i
                         class="bi bi-box-arrow-left pr-2"></i> Logout</a>
