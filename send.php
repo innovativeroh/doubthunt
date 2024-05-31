@@ -35,6 +35,11 @@ $code = @$_GET['success'];
                     $question = @$_POST['question'];
                     $sql = "INSERT INTO `questions`(`id`, `userID`, `question`, `media`, `dateTime`) VALUES (null,'$global_id','$question','','$date')";
                     $query = mysqli_query($conn, $sql);
+                    
+                    $lessLimitUse = $limitUse - 1;
+                    $sql2 = "UPDATE `active_plans` SET `limitUse`='$lessLimitUse' WHERE `userID`='$global_id' AND `expired`='0'";
+                    $query2 = mysqli_query($conn, $sql2);
+                    
                     echo "<meta http-equiv=\"refresh\" content=\"0; url=send.php?success=1\">";
                 }
                 if ($code == "1") {
@@ -42,8 +47,8 @@ $code = @$_GET['success'];
                     <center>
                         <img src='./core/img/tick.gif' class="max-w-[300px]">
                         <h1 class="font-bold text-orange-500 text-3xl">Submitted!</h1>
-                        <h1 class="font-light font-xl">Will be resolved soon!!</h1>
-                        <a href='#' class="mt-4 py-2 px-4 text-white bg-orange-400 rounded-xl inline-">Back To Home</a>
+                        <h1 class="font-light font-xl mt-2 mb-6">Will be resolved soon!!</h1>
+                        <a href='index.php' class="transition hover:bg-black py-2 px-4 text-white bg-orange-400 rounded-md">Back To Home</a>
                     </center>
                     <?php
                 } else {
