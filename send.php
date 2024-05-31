@@ -11,6 +11,7 @@ $code = @$_GET['success'];
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ask Question</title>
 </head>
+
 <body>
     <div>
         <br />
@@ -33,13 +34,14 @@ $code = @$_GET['success'];
                 $date = date("Y-m-d");
                 if (isset($_POST['ask'])) {
                     $question = @$_POST['question'];
-                    $sql = "INSERT INTO `questions`(`id`, `userID`, `question`, `media`, `dateTime`) VALUES (null,'$global_id','$question','','$date')";
+                    $categoryID = @$_POST['categoryID'];
+                    $sql = "INSERT INTO `questions`(`id`, `userID`, `question`, `media`, `categoryID`, `dateTime`) VALUES (null,'$global_id','$question','','$categoryID','$date')";
                     $query = mysqli_query($conn, $sql);
-                    
+
                     $lessLimitUse = $limitUse - 1;
                     $sql2 = "UPDATE `active_plans` SET `limitUse`='$lessLimitUse' WHERE `userID`='$global_id' AND `expired`='0'";
                     $query2 = mysqli_query($conn, $sql2);
-                    
+
                     echo "<meta http-equiv=\"refresh\" content=\"0; url=send.php?success=1\">";
                 }
                 if ($code == "1") {
@@ -48,7 +50,8 @@ $code = @$_GET['success'];
                         <img src='./core/img/tick.gif' class="max-w-[300px]">
                         <h1 class="font-bold text-orange-500 text-3xl">Submitted!</h1>
                         <h1 class="font-light font-xl mt-2 mb-6">Will be resolved soon!!</h1>
-                        <a href='index.php' class="transition hover:bg-black py-2 px-4 text-white bg-orange-400 rounded-md">Back To Home</a>
+                        <a href='index.php'
+                            class="transition hover:bg-black py-2 px-4 text-white bg-orange-400 rounded-md">Back To Home</a>
                     </center>
                     <?php
                 } else {
@@ -62,6 +65,20 @@ $code = @$_GET['success'];
                                     class="w-full border-[1px] p-2 text-sm h-[100px] resize-none rounded-xl mt-5"
                                     required="required"><?= $quiz ?></textarea>
                             </label>
+                            <label class="mt-4 block text-sm">Now Choose Subject?</label>
+                            <select name="categoryID" class="w-full mt-2 py-2 px-4 border-[1px] rounded-xl">
+                                <?php
+                                $sql = "SELECT * FROM `config_subject`";
+                                $query = mysqli_query($conn, $sql);
+                                while ($row = mysqli_fetch_array($query)) {
+                                    $id = $row['id'];
+                                    $value = $row['value'];
+                                    ?>
+                                <option value="<?=$id?>"><?=$value?></option>
+                                    <?php
+                                }
+                                ?>
+                            </select>
                             <input type="submit" name="ask" value="Get Answer!" method="POST"
                                 class="mt-5 w-full p-2 bg-orange-400 text-white font-semibold rounded-xl text-sm" />
                         </form>
