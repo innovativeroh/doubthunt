@@ -19,33 +19,57 @@ if (isset($_SESSION['username'])) {
     <div class="flex flex-col sm:flex-row h-screen">
         <?php include_once ("./includes/header.php"); ?>
         <div class="flex-1 overflow-y-auto">
-            <div class="w-full bg-black p-4 relative h-[200px]"
-                style="background: url('https://images.unsplash.com/photo-1518180013386-746fb077171b?q=80&w=2069&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'); background-size: cover;">
-                <img src="./core/img/profilePic.jpg"
-                    class="absolute top-[180px] shadow-lg left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[148px] h-[148px] rounded-full">
-            </div>
-            <div class="flex flex-col lg:flex-row">
-            <div class="flex-[3]">
-                Profile
-            </div>
-            <div class="flex-[7]">
-                <div class="mt-20 m-auto max-w-[600px] bg-white border-[1px] rounded-xl p-4">
-                <div class="flex flex-col lg:flex-row">
-                    <div class="flex-[1] text-center">
-                        <span class="font-semibold">Questions</span>
-                        <p>0</p>
+            <?php
+                $teacherID = @$_GET['id'];
+                $sql = "SELECT * FROM `users` WHERE `id`='$teacherID'";
+                $query = mysqli_query($conn, $sql);
+                $row = mysqli_fetch_array($query);
+                $teacher_name = $row['full_name'];
+                $teacher_email = $row['email'];
+                $teacher_mobile = $row['mobile'];
+                if($teacher_mobile == "") {
+                    $teacher_mobile = "Not Available";
+                } else {
+                    $teacher_mobile;
+                }
+                $teacher_date = $row['sign_up_date'];
+                $teacher_master = $row['master'];
+                    $sql2 = "SELECT * FROM `config_subject` WHERE `id`='$teacher_master'";
+                    $query2 = mysqli_query($conn, $sql2);
+                    $rows = mysqli_fetch_array($query2);
+                    $teacher_grade = $rows['value'];
+            ?>
+            <br />
+            <div class="max-w-[1200px] m-auto p-10">
+                <div class="flex flex-wrap gap-10 flex-col lg:flex-row">
+                    <div class="flex-[3]">
+                        <div class="bg-white shadow-xl border-[1px] p-4">
+                            <div class="relative w-full rounded-b-[60px] h-[120px] bg-yellow-300 mb-14">
+                                <img src="./core/img/profilePic.jpg" class="shadow-lg w-[80px] border-[4px] border-white h-[80px] rounded-full object-cover absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 mt-[60px] absolute">
+                            </div>
+                            <p class="text-center text-xl font-semibold"><?=$teacher_name?> <span class="text-zinc-400 font-regular">#<?=$teacherID?></span></p>
+                            <p class="bg-blue-100 rounded-full py-2 px-4 block text-center mt-4 mb-4"><?=$teacher_grade?></p>
+                            <div class="flex flex-wrap justify-center">
+                                <div class="flex-[1] p-2">
+                                    <p class="text-sm font-semibold text-center"><span class="font-bold text-xl font-regular"><i class="bi bi-graph-up-arrow"></i> 0</span> Resolved</p>
+                                </div>
+                                <div class="flex-[1] p-2">
+                                    <p class="text-sm font-semibold text-center"><span class="font-bold text-xl font-regular"><i class="bi bi-arrow-90deg-down"></i> 0</span> Skipped</p>
+                                </div>
+                            </div>
+                            <hr class="mt-2 mb-2" />
+                            <div class="p-4 flex flex-col gap-2">
+                            <p class="text-sm"><i class="bi bi-envelope"></i> <?=$teacher_email?></p>
+                            <p class="text-sm"><i class="bi bi-telephone"></i> <?=$teacher_mobile?></p>    
+                        </div>
+                        </div>
                     </div>
-                    <div class="flex-[1] text-center">
-                        <span class="font-semibold">Answers</span>
-                        <p>0</p>
-                    </div>
-                    <div class="flex-[1] text-center">
-                        <span class="font-semibold">Skipped</span>
-                        <p>0</p>
+                    <div class="flex-[7]">
+                        <div class="bg-white shadow-xl p-6 border-[1px]">
+                            <h1 class="text-xl font-semibold">Solved</h1>
+                        </div>
                     </div>
                 </div>
-                </div>
-            </div>
             </div>
         </div>
     </div>

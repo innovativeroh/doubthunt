@@ -158,7 +158,7 @@ if (isset($_SESSION['username'])) {
                                 <td class="px-4 py-4 whitespace-nowrap">
                                     <!-- <button
                                         class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Edit</button> -->
-                                        <a href="teacher.php"
+                                        <a href="teacher.php?id=<?=$userID?>"
                                         class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded ml-2"><i class="bi bi-eye"></i></a>
                                         <a href="delete_teacher.php?id=<?=$userID?>"
                                         class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded ml-2">Delete</a>
