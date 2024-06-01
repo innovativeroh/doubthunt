@@ -61,7 +61,7 @@
                                     <p class="text-sm font-semibold text-center"><span
                                             class="font-bold text-xl font-regular"><i class="bi bi-graph-up-arrow"></i>
                                             <?php
-                                            $sql = "SELECT q.id, q.question
+                                            $sql = "SELECT q.id, q.question, q.media
                                                 FROM questions q
                                                 LEFT JOIN answers a ON q.id = a.qID
                                                 WHERE a.qID IS NOT NULL AND a.adminID = '$teacherID';";
@@ -168,7 +168,7 @@
                                 <tbody>
                                     <?php
                                     $i = 0;
-                                    $sql = "SELECT q.id, q.question
+                                    $sql = "SELECT q.id, q.question, q.media
                                         FROM questions q
                                         LEFT JOIN answers a ON q.id = a.qID
                                         WHERE a.qID IS NOT NULL AND a.adminID = '$teacherID'
@@ -178,11 +178,17 @@
                                     while ($row = mysqli_fetch_assoc($query)) {
                                         $id = $row['id'];
                                         $question = $row['question'];
+                                        $media = $row['media'];
+                                        if ($media == "") {
+                                            $text_media = "";
+                                        } else {
+                                            $text_media = "View Media";
+                                        }
                                         $i++;
                                         ?>
                                         <tr class="border-b border-gray-200">
                                             <td class="px-4 py-4 whitespace-nowrap"><?= $i ?></td>
-                                            <td class="px-4 py-4"><?= $question ?></td>
+                                            <td class="px-4 py-4"><?= $question ?> <a href='./uploads/<?=$media?>' target='blank_' class='text-xs rounded-lg text-orange-500 underline'><?=$text_media?></a></td>
                                             <td class="px-4 py-4 whitespace-nowrap">
                                                 <!-- <button
                                         class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Edit</button> -->

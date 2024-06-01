@@ -3,6 +3,7 @@
 <?php
 $quiz = @$_GET['quiz'];
 $code = @$_GET['success'];
+$image = @$_GET['image'];
 ?>
 
 <head>
@@ -40,7 +41,8 @@ $code = @$_GET['success'];
                 if (isset($_POST['ask'])) {
                     $question = @$_POST['question'];
                     $categoryID = @$_POST['categoryID'];
-                    $sql = "INSERT INTO `questions`(`id`, `userID`, `question`, `media`, `categoryID`, `dateTime`) VALUES (null,'$global_id','$question','','$categoryID','$date')";
+                    $media = @$_POST['media'];
+                    $sql = "INSERT INTO `questions`(`id`, `userID`, `question`, `media`, `categoryID`, `dateTime`) VALUES (null,'$global_id','$question','$media','$categoryID','$date')";
                     $query = mysqli_query($conn, $sql);
 
                     $lessLimitUse = $limitUse - 1;
@@ -66,7 +68,9 @@ $code = @$_GET['success'];
                         ?>
                         <form action="send.php" method="POST">
                             <label for="question" class="font-semibold text-xl">Question
-                                <textarea name="question"
+                            <img src="./uploads/<?=$image?>" class="mt-2 w-full rounded-lg">
+                            <input type="hidden" name="media" value="<?=$image?>">    
+                            <textarea name="question"
                                     class="w-full border-[1px] p-2 text-sm h-[100px] resize-none rounded-xl mt-5"
                                     required="required"><?= $quiz ?></textarea>
                             </label>

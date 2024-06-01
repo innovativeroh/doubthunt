@@ -38,8 +38,8 @@ $data = json_decode($response, true);
 if ($data && isset($data['ParsedResults'][0]['ParsedText'])) {
     $parsed_text = $data['ParsedResults'][0]['ParsedText'];
     nl2br($parsed_text);
-    echo '<script>window.location.href = "https://doubthunt.com/send.php?quiz=' . urlencode($parsed_text) . '";</script>';
-    echo '<noscript><meta http-equiv="refresh" content="0;url=https://doubthunt.com/send.php?quiz=' . urlencode($parsed_text) . '"></noscript>';
+    echo '<script>window.location.href = "https://doubthunt.com/send.php?quiz=' . urlencode($parsed_text) . '&image=' . urlencode($randomName) . '";</script>';
+    echo '<noscript><meta http-equiv="refresh" content="0;url=https://doubthunt.com/send.php?quiz=' . urlencode($parsed_text) . '&image=' . urlencode($randomName) . '"></noscript>';
     exit;
 } else {
     echo "Failed to retrieve parsed text.";

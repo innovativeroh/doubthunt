@@ -15,6 +15,12 @@
     $row = mysqli_fetch_assoc($query);
     $id = $row['id'];
     $question = $row['question'];
+    $qmedia = $row['media'];
+    if($qmedia == "") {
+        $size2 = "hidden";
+    } else {
+        $size2 = "w-full";
+    }
     //End Of Getting The Question
     
     //Getting The Answer
@@ -22,6 +28,12 @@
     $query2 = mysqli_query($conn, $sql2);
     $rows = mysqli_fetch_assoc($query2);
     $answer = $rows['answer'];
+    $amedia = $rows['media'];
+    if($amedia == "") {
+        $size = "hidden";
+    } else {
+        $size = "w-full";
+    }
     $categoryID = $rows['categoryID'];
     //End Of Getting The Answer
 
@@ -41,9 +53,11 @@
                     <span class="font-regular text-xs text-gray-400">Home <i class="bi bi-chevron-right"></i> <?=$name?></span>
                     <h3 class="mt-4 font-bold text-xl">Question</h3>
                     <div class="w-full mt-2">
+                    <img src="../uploads/<?=$qmedia?>" class="<?=$size2?> mt-4 mb-4"> 
                         <?=$question?>
                     </div>
                     <div class="mt-4 bg-green-100 rounded-sm p-2 border-[1px] border-green-200">
+                    <img src="../answer_uploads/<?=$amedia?>" class="<?=$size?> mt-4 mb-4">    
                         <?=$answer?>
                     </div>
                 </div>
