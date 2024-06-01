@@ -47,7 +47,7 @@ $code = @$_GET['success'];
                     $sql2 = "UPDATE `active_plans` SET `limitUse`='$lessLimitUse' WHERE `userID`='$global_id' AND `expired`='0'";
                     $query2 = mysqli_query($conn, $sql2);
 
-                    echo "<meta http-equiv=\"refresh\" content=\"0; url=send.php?success=1\">";
+                    echo "<meta http-equiv=\"refresh\" content=\"0; url=dashboard.php\">";
                 }
                 if ($code == "1") {
                     ?>

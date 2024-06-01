@@ -182,7 +182,7 @@
                                         ?>
                                         <tr class="border-b border-gray-200">
                                             <td class="px-4 py-4 whitespace-nowrap"><?= $i ?></td>
-                                            <td class="px-4 py-4 whitespace-nowrap"><?= $question ?></td>
+                                            <td class="px-4 py-4"><?= $question ?></td>
                                             <td class="px-4 py-4 whitespace-nowrap">
                                                 <!-- <button
                                         class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Edit</button> -->
