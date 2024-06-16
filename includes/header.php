@@ -259,18 +259,18 @@ if ($global_full_name == "Student") {
                         </a>
                     </div>
                     <div class="flex flex-col gap-2 mt-2">
-                        <button
+                        <a href='idnex.php'><button
                             class="transition flex flex-start flex-row gap-2 items-center text-md bg-gray-100 p-2 rounded-lg pl-4 hover:bg-gray-200"><i
                                 class="bi bi-puzzle text-orange-500"></i>
                             <p class="text-md inline-block font-semibold text-zinc-800">Solve</p>
-                        </button>
+                        </button></a>
                     </div>
                     <div class="flex flex-col gap-2 mt-2">
-                        <button
+                        <a href='downloads.php'><button
                             class="transition flex flex-start flex-row gap-2 items-center text-md bg-gray-100 p-2 rounded-lg pl-4 hover:bg-gray-200"><i
                                 class="bi bi-journal text-orange-500"></i>
-                            <p class="text-md inline-block font-semibold text-zinc-800">Guides</p>
-                        </button>
+                            <p class="text-md inline-block font-semibold text-zinc-800">Downloads</p>
+                        </button></a>
                     </div>
                     <div class="flex flex-col gap-2 mt-2">
                         <a href='logout.php' class="w-full"><button

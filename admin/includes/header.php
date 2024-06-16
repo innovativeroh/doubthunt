@@ -41,14 +41,17 @@
                     class="transition w-full text-left block rounded-xl py-2 px-4 hover:bg-gray-900 text-white-500 mb-4"> <i
                         class="bi bi-award-fill pr-2"></i> Teachers</a>
 
-                        <a href="grades.php"
+                <a href="grades.php"
                     class="transition w-full text-left block rounded-xl py-2 px-4 hover:bg-gray-900 text-white-500 mb-4"> <i
                         class="bi bi-back pr-2"></i> Grades</a>
 
-                        <a href="subjects.php"
+                <a href="subjects.php"
                     class="transition w-full text-left block rounded-xl py-2 px-4 hover:bg-gray-900 text-white-500 mb-4"> <i
                         class="bi bi-back pr-2"></i> Subjects</a>
 
+                <a href="downloads.php"
+                    class="transition w-full text-left block rounded-xl py-2 px-4 hover:bg-gray-900 text-white-500 mb-4"> <i
+                        class="bi bi-bank pr-2"></i> Downloads</a>
 
                 <a href="plans.php"
                     class="transition w-full text-left block rounded-xl py-2 px-4 hover:bg-gray-900 text-white-500 mb-4"> <i
@@ -59,23 +62,23 @@
                         class="bi bi-box-arrow-left pr-2"></i> Logout</a>
             </div>
             <?php
-        } else if($global_permissions == "2") {
+        } else if ($global_permissions == "2") {
             ?>
-<div class="mt-10">
-                <span class="block mt-4 mb-4 font-bold text-sm text-gray-500">General</span>
-                <a href="dashboard.php"
-                    class="transition block w-full text-left rounded-xl py-2 px-4 hover:bg-gray-900 text-white-500 mb-4"> <i
-                        class="bi bi-speedometer pr-2"></i> Dashboard</a>
+                <div class="mt-10">
+                    <span class="block mt-4 mb-4 font-bold text-sm text-gray-500">General</span>
+                    <a href="dashboard.php"
+                        class="transition block w-full text-left rounded-xl py-2 px-4 hover:bg-gray-900 text-white-500 mb-4"> <i
+                            class="bi bi-speedometer pr-2"></i> Dashboard</a>
 
-                        <a href="teacher.php"
-                    class="transition block w-full text-left rounded-xl py-2 px-4 hover:bg-gray-900 text-white-500 mb-4"> <i
-                        class="bi bi-alt pr-2"></i> Teacher Panel</a>
+                    <a href="teacher.php"
+                        class="transition block w-full text-left rounded-xl py-2 px-4 hover:bg-gray-900 text-white-500 mb-4"> <i
+                            class="bi bi-alt pr-2"></i> Teacher Panel</a>
 
 
-                <a href="logout.php"
-                    class="transition w-full text-left block rounded-xl py-2 px-4 hover:bg-gray-900 text-white-500 mb-4"> <i
-                        class="bi bi-box-arrow-left pr-2"></i> Logout</a>
-            </div>
+                    <a href="logout.php"
+                        class="transition w-full text-left block rounded-xl py-2 px-4 hover:bg-gray-900 text-white-500 mb-4"> <i
+                            class="bi bi-box-arrow-left pr-2"></i> Logout</a>
+                </div>
             <?php
         }
         ?>

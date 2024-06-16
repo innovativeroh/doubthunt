@@ -1,9 +1,10 @@
 <?php
 include_once ("./includes/header.php");
-$global_name = htmlspecialchars($global_full_name);
-$global_email = htmlspecialchars($global_email);
-$global_mobile = htmlspecialchars(@$global_mobile);
 
+// Assuming these variables are set somewhere before this code.
+$global_name = htmlspecialchars(@$global_full_name);
+$global_email = htmlspecialchars(@$global_email);
+$global_mobile = htmlspecialchars(@$global_mobile);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -12,6 +13,7 @@ $global_mobile = htmlspecialchars(@$global_mobile);
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>DoubtHunt - Answer For Every Doubt</title>
+    <link rel="stylesheet" href="path_to_your_css_file.css">
 </head>
 
 <body>
@@ -25,14 +27,13 @@ $global_mobile = htmlspecialchars(@$global_mobile);
                 var totalAmount = $(this).data("amount");
                 var productId = $(this).data("id");
                 var packageName = $(this).data("name");
-                var packageDays = $(this).data("days");
-                var packageQty = $(this).data("qty");
-
+                var packageDownload = $(this).data("download");
+                
                 var options = {
                     "key": "rzp_test_qjpoTtbLdr7So6", // Replace with your Razorpay key ID
                     "amount": totalAmount * 100, // Amount in paise
                     "name": packageName,
-                    "description": packageName + " - " + packageDays + " days",
+                    "description": packageName,
                     "image": "https://doubthunt.com/core/img/favicon.png",
                     "prefill": {
                         "name": "<?php echo $global_name; ?>",
@@ -40,22 +41,22 @@ $global_mobile = htmlspecialchars(@$global_mobile);
                         "contact": "<?php echo $global_mobile; ?>"
                     },
                     "handler": function (response) {
+                        console.log("Starting AJAX call for payment...");
                         $.ajax({
-                            url: 'payment.php',
+                            url: 'paymentD.php',
                             type: 'post',
                             dataType: 'json',
                             data: {
                                 razorpay_payment_id: response.razorpay_payment_id,
                                 totalAmount: totalAmount,
-                                product_id: productId,
-                                package_days: packageDays,
-                                package_qty: packageQty
+                                product_id: productId
                             },
                             success: function (response) {
+                                console.log("Payment success:", response);
                                 window.location.href = 'index.php';
                             },
-                            error: function (response) {
-                                window.location.href = 'plans.php?error=404';
+                            error: function (xhr, status, error) {
+                                console.error("Payment failed:", status, error);
                             }
                         });
                     },
@@ -70,45 +71,47 @@ $global_mobile = htmlspecialchars(@$global_mobile);
         });
     </script>
     <div>
-        <div class="max-w-[1280px] m-auto">
+        <div class="max-w-[800px] m-auto">
             <div class="w-full h-auto lg:h-screen">
                 <br />
-                <div class="mt-[200px] p-4">
-                    <h1 class="font-semibold text-orange-500 text-5xl text-center">Plans</h1>
+                <div class="mt-[100px] p-4">
+                    <h1 class="font-semibold text-orange-500 text-5xl text-center">Shop</h1>
                     <p class="font-semibold text-xl text-zinc-800 text-center mt-5 mb-10">
-                        Our pricing plans are designed to be affordable, flexible, and tailored to your unique needs.
+                        Learn quickly and profoundly with impressive illustrations and graphics. <br />
+                        Excellent Question Bank, Worksheets, and Modules
                     </p>
-                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-2 lg:gap-10 mb-10">
-                        <?php
-                        $sql = "SELECT * FROM `config_plans`";
-                        $query = mysqli_query($conn, $sql);
-                        while ($rows = mysqli_fetch_assoc($query)) {
-                            $name = htmlspecialchars($rows['package_name']);
-                            $days = htmlspecialchars($rows['days']);
-                            $qty = htmlspecialchars($rows['qty']);
-                            $amount = htmlspecialchars($rows['amount']);
-                            $id = htmlspecialchars($rows['id']); // Assuming there's an `id` column for each plan
-                            ?>
-                            <div class="p-10 bg-white rounded-lg w-full shadow-xl">
-                                <h3 class="text-xl font-semibold"><?= $name ?></h3>
-                                <h1 class="text-3xl mt-2 font-bold text-orange-500">
-                                    <span class="mr-2 text-lg text-zinc-700 font-regular">Rs.</span>
-                                    <?= $amount ?>
-                                    <span class="text-sm text-zinc-700 font-light">/ <?= $days ?> days</span>
-                                </h1>
-                                <hr class="mt-5 mb-5" />
-                                <p class="text-center text-sm font-semibold">Resolve <?= $qty ?> Questions Per Day.</p>
+                    <?php
+                    $sql = "SELECT * FROM `config_downloads`";
+                    $query = mysqli_query($conn, $sql);
+                    while ($rows = mysqli_fetch_assoc($query)) {
+                        $id = htmlspecialchars($rows['id']);
+                        $name = htmlspecialchars($rows['name']);
+                        $content = htmlspecialchars($rows['content']);
+                        $amount = htmlspecialchars($rows['price']);
+                        $value = htmlspecialchars($rows['value']);
+                    ?>
+                    <div class="w-full bg-white shadow-xl rounded-lg border-[1px] mb-4">
+                        <div class="p-4 lg:items-center gap-4 justify-between flex flex-col lg:flex-row">
+                            <div class="flex-[0.5]">
+                                <img src="./core/img/extension.png" class="lg:w-full">
+                            </div>
+                            <div class="flex-[7]">
+                                <h1 class="text-xl font-semibold leading-10"><?=$name?></h1>
+                                <p class="text-zinc-600 text-sm"><?=$content?></p>
+                            </div>
+                            <div class="flex-[2]">
                                 <button
                                     class="bg-orange-500 rounded-lg text-white font-semibold text-center w-full py-2 px-4 mt-5 buy_now"
                                     data-amount="<?= $amount ?>" data-id="<?= $id ?>" data-name="<?= $name ?>"
-                                    data-days="<?= $days ?>" data-qty="<?= $qty ?>">
-                                    Buy Now!
+                                    data-download="<?= $value ?>">
+                                    Rs. <?=$amount ?> <i class="bi bi-download"></i>
                                 </button>
                             </div>
-                            <?php
-                        }
-                        ?>
+                        </div>
                     </div>
+                    <?php
+                    }
+                    ?>
                 </div>
             </div>
         </div>
