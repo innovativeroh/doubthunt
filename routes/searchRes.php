@@ -12,11 +12,11 @@ while ($row = mysqli_fetch_assoc($result)) {
     $count2 = mysqli_num_rows($result2);
     if ($count2 > 0) {
         ?>
-        <div class="transition p-4 py-2 flex items-center justify-between hover:bg-zinc-100">
-            <div class="flex-[1] p-2">
-                <a href='question.php?id=<?= $qID ?>' class="font-semibold text-zinc-600"><?= $question ?></a>
+        <div class="transition px-4 py-1 lg:p-4 lg:py-2 flex items-center justify-between hover:bg-zinc-100">
+            <div class="flex-[1]">
+                <a href='question.php?id=<?= $qID ?>' class="font-semibold text-zinc-600 text-xs"><?= $question ?></a>
             </div>
-            <i class="bi bi-box-arrow-up-right text-xs text-zinc-500"></i>
+            <i class="hidden lg:block bi bi-box-arrow-up-right text-xs text-zinc-500"></i>
         </div>
         <?php
     } else {

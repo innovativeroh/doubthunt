@@ -92,15 +92,15 @@
                             class="text-orange-600">Questions.</span>
                     </h1>
                     <div
-                        class="rounded-sm shadow-lg max-w-[1050px] p-4 bg-white rounded-sm border-gray-200 rounded-xl mt-8">
-                        <div class="flex flex-row items-center">
-                            <div class="flex-[10] bg-white relative">
+                        class="rounded-sm shadow-lg max-w-[1050px] p-2 bg-white rounded-sm border-gray-200 rounded-xl mt-8">
+                        <div class="flex flex-row items-center relative">
+                            <div class="flex-[10] bg-white ">
                                 <i class="bi bi-keyboard absolute text-gray-400 left-[10px] absolute top-[0px]"
                                     style="font-size: 26px;"></i>
                                 <input type="text"
                                     class="w-full pl-12 py-2 outline-none border-[1px] border-gray-200 rounded-l-lg"
                                     name="query" id="searchInput" placeholder="Search..." />
-                                <div id="searchResults" class="absolute w-full bg-white rounded-b-xl shadow-xl hidden">
+                                <div id="searchResults" class="absolute w-full lg:max-w-[600px] bg-white rounded-b-xl shadow-xl hidden">
                                 </div>
                             </div>
                             <div class="flex-1">

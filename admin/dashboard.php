@@ -43,7 +43,7 @@ if (isset($_SESSION['username'])) {
                         <div class="flex justify-between items-center">
                             <div>
                                 <h1 class="font-semibold text-3xl"><?php
-                                $sql = "SELECT * FROM `users` WHERE `permissions`='1'";
+                                $sql = "SELECT * FROM `users` WHERE `permissions`='2'";
                                 $query = mysqli_query($conn, $sql);
                                 echo $num_rows = mysqli_num_rows($query);
                                 ?></h1>
@@ -101,16 +101,21 @@ if (isset($_SESSION['username'])) {
                     </div>
                     <?php
                 } else if ($global_permissions == "2") {
+                    $today = date("Y-m-d");  // Correct format should be 'Y-m-d' for MySQL
+                    $startOfWeek = date("Y-m-d", strtotime("last Sunday"));
+                    $startOfMonth = date("Y-m-01");
                     ?>
                         <div class="w-full bg-gray-200 border-[1px] rounded-xl p-8">
                             <div class="flex justify-between items-center">
                                 <div>
-                                    <h1 class="font-semibold text-3xl"><?php
-                                    $sql = "SELECT * FROM `config_plans`";
-                                    $query = mysqli_query($conn, $sql);
-                                    echo $num_rows = mysqli_num_rows($query);
-                                    ?></h1>
-                                    <span class="block mt-4 font-semibold">Questions</span>
+                                    <h1 class="font-semibold text-3xl">
+                                        <?php
+                                        $sql = "SELECT * FROM `answers` WHERE DATE(`dateTime`)='$today'";
+                                        $query = mysqli_query($conn, $sql);
+                                        echo $num_rows = mysqli_num_rows($query);
+                                        ?>
+                                    </h1>
+                                    <span class="block mt-4 font-semibold">Today</span>
                                 </div>
                                 <div>
                                     <i class="bi bi-graph-up-arrow text-4xl text-gray-950"></i>
@@ -120,12 +125,48 @@ if (isset($_SESSION['username'])) {
                         <div class="w-full bg-gray-200 border-[1px] rounded-xl p-8">
                             <div class="flex justify-between items-center">
                                 <div>
-                                    <h1 class="font-semibold text-3xl"><?php
-                                    $sql = "SELECT * FROM `config_plans`";
-                                    $query = mysqli_query($conn, $sql);
-                                    echo $num_rows = mysqli_num_rows($query);
-                                    ?></h1>
-                                    <span class="block mt-4 font-semibold">Skipped</span>
+                                    <h1 class="font-semibold text-3xl">
+                                        <?php
+                                        $sql = "SELECT * FROM `answers` WHERE DATE(`dateTime`) BETWEEN '$startOfWeek' AND '$today'";
+                                        $query = mysqli_query($conn, $sql);
+                                        echo $num_rows = mysqli_num_rows($query);
+                                        ?>
+                                    </h1>
+                                    <span class="block mt-4 font-semibold">Weekly</span>
+                                </div>
+                                <div>
+                                    <i class="bi bi-graph-up-arrow text-4xl text-gray-950"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="w-full bg-gray-200 border-[1px] rounded-xl p-8">
+                            <div class="flex justify-between items-center">
+                                <div>
+                                    <h1 class="font-semibold text-3xl">
+                                        <?php
+                                        $sql = "SELECT * FROM `answers` WHERE DATE(`dateTime`) BETWEEN '$startOfMonth' AND '$today'";
+                                        $query = mysqli_query($conn, $sql);
+                                        echo $num_rows = mysqli_num_rows($query);
+                                        ?>
+                                    </h1>
+                                    <span class="block mt-4 font-semibold">Monthly</span>
+                                </div>
+                                <div>
+                                    <i class="bi bi-graph-up-arrow text-4xl text-gray-950"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="w-full bg-gray-200 border-[1px] rounded-xl p-8">
+                            <div class="flex justify-between items-center">
+                                <div>
+                                    <h1 class="font-semibold text-3xl">
+                                        <?php
+                                        $sql = "SELECT * FROM `answers`";
+                                        $query = mysqli_query($conn, $sql);
+                                        echo $num_rows = mysqli_num_rows($query);
+                                        ?>
+                                    </h1>
+                                    <span class="block mt-4 font-semibold">Total</span>
                                 </div>
                                 <div>
                                     <i class="bi bi-arrow-90deg-down text-4xl text-gray-950"></i>
