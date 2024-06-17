@@ -5,6 +5,8 @@ include_once ("./includes/header.php");
 $global_name = htmlspecialchars(@$global_full_name);
 $global_email = htmlspecialchars(@$global_email);
 $global_mobile = htmlspecialchars(@$global_mobile);
+
+$search_g = @$_GET['q'];
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -28,7 +30,7 @@ $global_mobile = htmlspecialchars(@$global_mobile);
                 var productId = $(this).data("id");
                 var packageName = $(this).data("name");
                 var packageDownload = $(this).data("download");
-                
+
                 var options = {
                     "key": "rzp_test_qjpoTtbLdr7So6", // Replace with your Razorpay key ID
                     "amount": totalAmount * 100, // Amount in paise
@@ -41,7 +43,6 @@ $global_mobile = htmlspecialchars(@$global_mobile);
                         "contact": "<?php echo $global_mobile; ?>"
                     },
                     "handler": function (response) {
-                        console.log("Starting AJAX call for payment...");
                         $.ajax({
                             url: 'paymentD.php',
                             type: 'post',
@@ -52,7 +53,15 @@ $global_mobile = htmlspecialchars(@$global_mobile);
                                 product_id: productId
                             },
                             success: function (response) {
-                                console.log("Payment success:", response);
+                                console.log("success", response);
+
+                                var downloadLink = document.createElement('a');
+                                downloadLink.href = './downloads/' + packageDownload;
+                                downloadLink.download = packageDownload;
+                                document.body.appendChild(downloadLink);
+                                downloadLink.click();
+                                document.body.removeChild(downloadLink);
+
                                 window.location.href = 'index.php';
                             },
                             error: function (xhr, status, error) {
@@ -80,8 +89,17 @@ $global_mobile = htmlspecialchars(@$global_mobile);
                         Learn quickly and profoundly with impressive illustrations and graphics. <br />
                         Excellent Question Bank, Worksheets, and Modules
                     </p>
+                    <form action="#" method="GET" class="relative">
+                        <input type="text" name="q" placeholder="Search..."
+                            class="transition w-full pl-12 p-4 rounded-xl shadow-none focus:shadow-xl border-[1px]" />
+                        <i class="bi bi-search absolute left-5 top-5 text-zinc-600"></i>
+                    </form>
                     <?php
-                    $sql = "SELECT * FROM `config_downloads`";
+                    if ($search_g == "") {
+                        $sql = "SELECT * FROM `config_downloads`";
+                    } else {
+                        $sql = "SELECT * FROM `config_downloads` WHERE `name` LIKE '%$search_g%'";
+                    }
                     $query = mysqli_query($conn, $sql);
                     while ($rows = mysqli_fetch_assoc($query)) {
                         $id = htmlspecialchars($rows['id']);
@@ -89,34 +107,33 @@ $global_mobile = htmlspecialchars(@$global_mobile);
                         $content = htmlspecialchars($rows['content']);
                         $amount = htmlspecialchars($rows['price']);
                         $value = htmlspecialchars($rows['value']);
-                    ?>
-                    <div class="w-full bg-white shadow-xl rounded-lg border-[1px] mb-4">
-                        <div class="p-4 lg:items-center gap-4 justify-between flex flex-col lg:flex-row">
-                            <div class="flex-[0.5]">
-                                <img src="./core/img/extension.png" class="lg:w-full">
-                            </div>
-                            <div class="flex-[7]">
-                                <h1 class="text-xl font-semibold leading-10"><?=$name?></h1>
-                                <p class="text-zinc-600 text-sm"><?=$content?></p>
-                            </div>
-                            <div class="flex-[2]">
-                                <button
-                                    class="bg-orange-500 rounded-lg text-white font-semibold text-center w-full py-2 px-4 mt-5 buy_now"
-                                    data-amount="<?= $amount ?>" data-id="<?= $id ?>" data-name="<?= $name ?>"
-                                    data-download="<?= $value ?>">
-                                    Rs. <?=$amount ?> <i class="bi bi-download"></i>
-                                </button>
+                        ?>
+                        <div class="w-full bg-white shadow-none hover:shadow-xl rounded-lg border-[1px] mb-4">
+                            <div class="p-4 lg:items-center gap-4 justify-between flex flex-col lg:flex-row">
+                                <div class="flex-[0.5]">
+                                    <img src="./core/img/extension.png" class="lg:w-full">
+                                </div>
+                                <div class="flex-[7]">
+                                    <h1 class="text-xl font-semibold leading-10"><?= $name ?></h1>
+                                    <p class="text-zinc-600 text-sm"><?= $content ?></p>
+                                </div>
+                                <div class="flex-[2]">
+                                    <button
+                                        class="bg-orange-500 rounded-lg text-white font-semibold text-center w-full py-2 px-4 mt-5 buy_now"
+                                        data-amount="<?= $amount ?>" data-id="<?= $id ?>" data-name="<?= $name ?>"
+                                        data-download="<?= $value ?>">
+                                        Rs. <?= $amount ?> <i class="bi bi-download"></i>
+                                    </button>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <?php
+                        <?php
                     }
                     ?>
                 </div>
             </div>
         </div>
     </div>
-    <?php include_once ("./includes/footer.php"); ?>
 </body>
 
 </html>

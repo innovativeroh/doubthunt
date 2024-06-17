@@ -4,6 +4,7 @@
 <link rel="stylesheet" href="./core/css/main.css" type="text/css">
 <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4="
     crossorigin="anonymous"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
 <div class="w-full p-4 bg-white shadow-lg fixed z-[10]">
     <div class="max-w-[1280px] m-auto">
         <div class="flex flex-wrap justify-center items-center">

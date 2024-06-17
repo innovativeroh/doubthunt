@@ -24,5 +24,4 @@
         <p class="font-semibold text-zinc-700">&copy; Doubthunt 2024. All Right's Reserved</p>
     </div>
 </div>
-<script src="https://cdn.tailwindcss.com"></script>
 <script src="./core/js/functions.js"></script>
