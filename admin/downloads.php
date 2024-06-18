@@ -34,7 +34,7 @@ if (isset($_SESSION['username'])) {
                             $pdfFile = $_FILES['pdfFile'];
 
                             // File upload path
-                            $targetDir = "../downloads/";
+                            $targetDir = "../$global_folder_name/";
                             $fileName = basename($pdfFile["name"]);
                             $targetFilePath = $targetDir . $fileName;
 

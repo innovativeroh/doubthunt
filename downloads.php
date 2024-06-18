@@ -21,6 +21,8 @@ $search_g = @$_GET['q'];
 <body>
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
     <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+    <?php
+                                    $new_folder_name = rand(0, 99999999); ?>
     <script>
         $(document).ready(function () {
             $('body').on('click', '.buy_now', function (e) {
@@ -30,7 +32,6 @@ $search_g = @$_GET['q'];
                 var productId = $(this).data("id");
                 var packageName = $(this).data("name");
                 var packageDownload = $(this).data("download");
-
                 var options = {
                     "key": "rzp_test_qjpoTtbLdr7So6", // Replace with your Razorpay key ID
                     "amount": totalAmount * 100, // Amount in paise
@@ -50,13 +51,14 @@ $search_g = @$_GET['q'];
                             data: {
                                 razorpay_payment_id: response.razorpay_payment_id,
                                 totalAmount: totalAmount,
-                                product_id: productId
+                                product_id: productId,
+                                packageFolder: "<?=$new_folder_name?>"
                             },
                             success: function (response) {
                                 console.log("success", response);
 
                                 var downloadLink = document.createElement('a');
-                                downloadLink.href = './downloads/' + packageDownload;
+                                downloadLink.href = './<?=$new_folder_name?>/' + packageDownload;
                                 downloadLink.download = packageDownload;
                                 document.body.appendChild(downloadLink);
                                 downloadLink.click();
@@ -118,10 +120,11 @@ $search_g = @$_GET['q'];
                                     <p class="text-zinc-600 text-sm"><?= $content ?></p>
                                 </div>
                                 <div class="flex-[2]">
+                                    
                                     <button
                                         class="bg-orange-500 rounded-lg text-white font-semibold text-center w-full py-2 px-4 mt-5 buy_now"
                                         data-amount="<?= $amount ?>" data-id="<?= $id ?>" data-name="<?= $name ?>"
-                                        data-download="<?= $value ?>">
+                                        data-download="<?= $value ?>" data-folder="<?= $new_folder_name ?>">
                                         Rs. <?= $amount ?> <i class="bi bi-download"></i>
                                     </button>
                                 </div>

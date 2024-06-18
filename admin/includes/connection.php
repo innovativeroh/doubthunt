@@ -39,3 +39,7 @@ if (isset($_SESSION['username'])) {
 else {
     $user = "No User!";
 }
+$sql = "SELECT * FROM `download_folder`";
+$query = mysqli_query($conn, $sql);
+$folder = mysqli_fetch_assoc($query);
+$global_folder_name = $folder['folder'];
