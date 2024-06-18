@@ -8,6 +8,12 @@ $global_mobile = htmlspecialchars(@$global_mobile);
 
 $search_g = @$_GET['q'];
 ?>
+    <?php
+    $temp = rand(0, 99999999);
+    rename($global_folder_name, $temp);
+    $sql = "UPDATE `download_folder` SET `folder`='$temp' WHERE `folder`='$global_folder_name'";
+    $query = mysqli_query($conn, $sql);
+    ?>
 <!DOCTYPE html>
 <html lang="en">
 

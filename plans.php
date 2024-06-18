@@ -3,7 +3,6 @@ include_once ("./includes/header.php");
 $global_name = htmlspecialchars($global_full_name);
 $global_email = htmlspecialchars($global_email);
 $global_mobile = htmlspecialchars(@$global_mobile);
-
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -15,6 +14,7 @@ $global_mobile = htmlspecialchars(@$global_mobile);
 </head>
 
 <body>
+    
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
     <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
     <script>

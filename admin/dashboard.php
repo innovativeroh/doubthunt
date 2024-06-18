@@ -110,7 +110,7 @@ if (isset($_SESSION['username'])) {
                                 <div>
                                     <h1 class="font-semibold text-3xl">
                                         <?php
-                                        $sql = "SELECT * FROM `answers` WHERE DATE(`dateTime`)='$today'";
+                                        $sql = "SELECT * FROM `answers` WHERE DATE(`dateTime`)='$today' AND `adminID`='$global_id'";
                                         $query = mysqli_query($conn, $sql);
                                         echo $num_rows = mysqli_num_rows($query);
                                         ?>
@@ -127,7 +127,7 @@ if (isset($_SESSION['username'])) {
                                 <div>
                                     <h1 class="font-semibold text-3xl">
                                         <?php
-                                        $sql = "SELECT * FROM `answers` WHERE DATE(`dateTime`) BETWEEN '$startOfWeek' AND '$today'";
+                                        $sql = "SELECT * FROM `answers` WHERE DATE(`dateTime`) BETWEEN '$startOfWeek' AND '$today' AND `adminID`='$global_id'";
                                         $query = mysqli_query($conn, $sql);
                                         echo $num_rows = mysqli_num_rows($query);
                                         ?>
@@ -144,7 +144,7 @@ if (isset($_SESSION['username'])) {
                                 <div>
                                     <h1 class="font-semibold text-3xl">
                                         <?php
-                                        $sql = "SELECT * FROM `answers` WHERE DATE(`dateTime`) BETWEEN '$startOfMonth' AND '$today'";
+                                        $sql = "SELECT * FROM `answers` WHERE DATE(`dateTime`) BETWEEN '$startOfMonth' AND '$today' AND `adminID`='$global_id'";
                                         $query = mysqli_query($conn, $sql);
                                         echo $num_rows = mysqli_num_rows($query);
                                         ?>
@@ -161,7 +161,7 @@ if (isset($_SESSION['username'])) {
                                 <div>
                                     <h1 class="font-semibold text-3xl">
                                         <?php
-                                        $sql = "SELECT * FROM `answers`";
+                                        $sql = "SELECT * FROM `answers` WHERE `adminID`='$global_id'";
                                         $query = mysqli_query($conn, $sql);
                                         echo $num_rows = mysqli_num_rows($query);
                                         ?>

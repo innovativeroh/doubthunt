@@ -147,7 +147,7 @@ if (isset($_SESSION['username'])) {
                                 <td class="px-4 py-4"><?= $content ?></td>
                                 <td class="px-4 py-4 whitespace-nowrap"><?= $amount ?></td>
                                 <td class="px-4 py-4 whitespace-nowrap hover:underline hover:text-blue-600"><a
-                                        href='../downloads/<?= $value ?>' target='_blank'><?= $value ?></a></td>
+                                        href='../<?=$global_folder_name?>/<?= $value ?>' target='_blank'><?= $value ?></a></td>
                                 <td class="px-4 py-4 whitespace-nowrap">
                                     <a href="delete_download.php?id=<?= $planID ?>"
                                         class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded ml-2">Delete</a>

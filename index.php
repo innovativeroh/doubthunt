@@ -4,9 +4,6 @@
 <head>
     <meta charset="UTF-8">
     <?php include_once ("./includes/header.php"); ?>
-    <?php
-
-    ?>
     <div class="w-full h-screen z-[10] fixed" id="OcrOverlay" style="display: none;">
         <div
             class="w-[350px] lg:w-[500px] bg-white z-[20] shadow-lg rounded-lg top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 absolute">
